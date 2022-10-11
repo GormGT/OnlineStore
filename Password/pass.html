@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Passwords</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h1>Make a secure password</h1>
+    <form onsubmit="event.preventDefault();">
+
+        <p>Type a password:</p>
+        <input id="input1" type="password">
+        <p id="firstFieldLabel"></p>
+        <br>
+        <p>Repeat password:</p>
+        <input id="input2" type="password">
+        <p id="secondFieldLabel"></p>
+        <br>
+        <br>
+        <button type="submit" onclick="checkPassword()">Submit</button>
+
+    </form>
+    <script src='script.js'></script>
+</body>
+</html>
