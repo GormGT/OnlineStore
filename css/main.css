@@ -1,5 +1,21 @@
+/*Define extra fonts*/
+@font-face {
+    font-family: "tf2Secondary";
+    src: url("/fonts/TF2secondary.ttf");
+}
+@font-face {
+    font-family: "bebasRegular";
+    src: url("/fonts/Bebas-Regular.ttf");
+}
+@font-face {
+    font-family: "borisBlack";
+    src: url("/fonts/BorisBlackBloxx.ttf");
+}
+
+
 body {
     margin: 0;
+    background-color: rgb(107, 107, 107);
 }
 
 /*Define the main grid containers*/
@@ -22,6 +38,29 @@ body {
     color: white;
     column-gap: 50px;
 }*/
+.mainHead{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "borisBlack";
+    color: white;
+    z-index: 1;
+    text-align: center;
+    text-shadow: 3px 3px black;
+    font-size: 25px;
+}
+.mainHead span{
+    font-family: "bebasRegular";
+    font-size: 70px;
+}
+.headCont{
+    position: relative;
+}
+header img{
+    filter: grayscale(50%) blur(6px);
+}
+
 .navbar ul {
     list-style-type: none;
     margin: 0;
@@ -29,8 +68,14 @@ body {
     overflow: hidden;
     background-image: linear-gradient(gray, rgb(77, 77, 77));
 }
-li {
+.navbar img{
+    filter: invert(100%);
+}
+li.navLeft {
     float: left;
+}
+li.navRight {
+    float: right;
 }
 li a {
     display: block;
@@ -38,7 +83,15 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-family: "TF2secondary";
+    padding-bottom: 1;
 }
 li a:hover{
-    background-color: orange;
+    background-color: rgb(204, 116, 0);
+}
+
+/*Hoveddelen av siden*/
+
+.mainSub{
+    font-family: "TF2Secondary";
 }
