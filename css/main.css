@@ -11,6 +11,10 @@
     font-family: "borisBlack";
     src: url("/fonts/BorisBlackBloxx.ttf");
 }
+@font-face {
+    font-family: "tf2Build";
+    src: url("/fonts/tf2build.ttf");
+}
 
 
 body {
@@ -43,17 +47,17 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: "borisBlack";
+    font-family: "bebasRegular";
     color: white;
     z-index: 1;
     text-align: center;
     text-shadow: 3px 3px black;
     font-size: 25px;
 }
-.mainHead span{
-    font-family: "bebasRegular";
-    font-size: 70px;
-}
+/*.mainHead span{
+    font-family: "borisBlack";
+    font-size: 50px;
+}*/
 .headCont{
     position: relative;
 }
@@ -94,4 +98,85 @@ li a:hover{
 
 .mainSub{
     font-family: "TF2Secondary";
+    text-align: center;
+}
+
+.indexStore {  display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+    grid-template-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "left main right";
+    font-family: "TF2Secondary";
+}
+  
+.indexStoreArea { grid-area: main; }
+  
+.left { grid-area: left; }
+  
+.right { grid-area: right; }
+  
+.indexStoreArea {  
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    text-align: center;
+    grid-template-areas:
+      "a b c d"
+      "e f g h"
+      "i j k l"
+      "m n o p";
+}
+  
+.a { grid-area: a; }
+  
+.b { grid-area: b; }
+  
+.c { grid-area: c; }
+  
+.d { grid-area: d; }
+  
+.e { grid-area: e; }
+  
+.f { grid-area: f; }
+  
+.g { grid-area: g; }
+  
+.h { grid-area: h; }
+  
+.i { grid-area: i; }
+  
+.j { grid-area: j; }
+  
+.k { grid-area: k; }
+  
+.l { grid-area: l; }
+  
+.m { grid-area: m; }
+  
+.n { grid-area: n; }
+  
+.o { grid-area: o; }
+  
+.p { grid-area: p; }
+  
+
+.storeItem{
+    margin: 10px;
+}
+.storeItem p{
+    margin: 0px;
+    font-family: "tf2Build";
+    color: rgb(214, 214, 39);
+}
+.storeItem img{
+    background-color: rgb(71, 64, 56);
+    border-radius: 30px;
+    padding: 1px 10px;
 }
