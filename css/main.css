@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+}
+
+/*Define the main grid containers*/
+/*.grid-container-nav {
+    display: grid;
+    grid-template-areas: 
+    'header header header header header header'
+    'main main main'
+    ;
+}
+.navbar {
+    grid-area: header;
+    background-color: black;
+    grid-template-columns: 10fr 10fr 10fr 10fr;
+    width: 100%;
+    text-align: left;
+
+}
+.grid-navbar-element {
+    color: white;
+    column-gap: 50px;
+}*/
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image: linear-gradient(gray, rgb(77, 77, 77));
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover{
+    background-color: orange;
+}
