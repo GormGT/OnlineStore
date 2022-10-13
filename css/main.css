@@ -19,7 +19,7 @@
 
 body {
     margin: 0;
-    background-color: rgb(107, 107, 107);
+    background-color: rgb(69, 69, 69);
 }
 
 /*Define the main grid containers*/
@@ -179,4 +179,7 @@ li a:hover{
     background-color: rgb(71, 64, 56);
     border-radius: 30px;
     padding: 1px 10px;
+}
+.storeItem img:hover{
+    background-color: rgb(149, 149, 149);
 }
