@@ -1,10 +1,11 @@
-let storeSlots = document.querySelectorAll(".storeItem");
+let storeSlots = Array.from(document.querySelector(".indexStoreArea").children);
 
-let storeSlotText = document.querySelectorAll(".storeItem p");
-let storeSlotPrice = document.querySelectorAll(".storeItem p.price");
-let storeSlotImage = document.querySelectorAll(".storeItem img");
 
-function addStoreItems(){
+//let storeSlotText = document.querySelectorAll(".storeItem p");
+//let storeSlotPrice = document.querySelectorAll(".storeItem p.price");
+//let storeSlotImage = document.querySelectorAll(".storeItem img");
+
+function findStoreItems(){
 
 
     function fillArray(){
@@ -24,7 +25,26 @@ function addStoreItems(){
         })
     }
     assignID(allItems);
+    allItems.sort((a, b) => a.id - b.id);
     console.log(allItems);
 }
 
-addStoreItems();
+findStoreItems();
+
+function addStoreItems(allStoreSlots, objects){
+    for(i = 0; i < objects.length; i++){
+        const slot = allStoreSlots[i];
+        console.log(slot);
+        const object = objects[i];
+        console.log(object);
+        const itemName = slot.querySelector(".itemName");
+        console.log(itemName);
+        const image = slot.querySelector("img");
+        const price = slot.querySelector("p.price");
+        itemName.innerText = object.name;
+        image.setAttribute("src", object.image);
+        price.innerText = object.price;
+    };
+}
+
+addStoreItems(storeSlots, allItems);
