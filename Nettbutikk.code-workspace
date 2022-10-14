@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../Programmering/VG2/Dategenerator"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Nettbutikk"
+	}
+}
