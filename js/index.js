@@ -32,7 +32,7 @@ function findStoreItems(){
 findStoreItems();
 
 function addStoreItems(allStoreSlots, objects){
-    for(i = 0; i < objects.length; i++){
+    for(i = 0; i < allStoreSlots.length; i++){
         const slot = allStoreSlots[i];
         console.log(slot);
         const object = objects[i];

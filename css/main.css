@@ -15,7 +15,14 @@
     font-family: "tf2Build";
     src: url("/fonts/tf2build.ttf");
 }
-
+@font-face {
+    font-family: "SFalt";
+    src: url("/fonts/Truetype/GhoulFriAOE.ttf");
+}
+@font-face {
+    font-family: "NewsHeader";
+    src: url("/fonts/LietzLindauHamburg.otf");
+}
 
 body {
     margin: 0;
@@ -60,6 +67,7 @@ body {
 }*/
 .headCont{
     position: relative;
+    height: 100%;
 }
 header img{
     filter: grayscale(50%) blur(6px);
@@ -91,14 +99,19 @@ li a {
     padding-bottom: 1;
 }
 li a:hover{
-    background-color: rgb(204, 116, 0);
+    background-color: rgb(240, 52, 0);
 }
 
 /*Hoveddelen av siden*/
 
 .mainSub{
-    font-family: "TF2Secondary";
+    font-family: "Newsheader";
     text-align: center;
+    background-image: linear-gradient(rgb(208, 80, 0), rgb(228, 58, 2));
+    margin: 0;
+    padding: 10px;
+    color: white;
+    text-shadow: 3px 3px black;
 }
 
 .indexStore {  display: grid;
@@ -124,7 +137,7 @@ li a:hover{
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
-    gap: 0px 0px;
+    gap: 10px 10px;
     grid-auto-flow: row;
     text-align: center;
     grid-template-areas:
@@ -177,9 +190,39 @@ li a:hover{
 }
 .storeItem img{
     background-color: rgb(71, 64, 56);
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 1px 10px;
 }
 .storeItem img:hover{
     background-color: rgb(149, 149, 149);
 }
+.indexToProducts a{
+    text-decoration: none;
+    font-family: "TF2Build";
+    color: white;
+    text-align: center;
+    background-color: rgb(104, 104, 104);
+    padding: 10px;
+    border-radius: 5px;
+}
+.indexToProducts a:hover{
+    background-color: rgb(50, 50, 50);
+}
+.indexToProducts {  
+    display: grid;
+    grid-template-columns: 0.9fr 1.2fr 0.9fr;
+    grid-template-rows: 1.2fr 0.5fr 1.3fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . ."
+      "left button right"
+      ". . .";
+}
+  
+.left { grid-area: left; }
+  
+.button { grid-area: button; }
+  
+.right { grid-area: right; }
+
