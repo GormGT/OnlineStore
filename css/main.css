@@ -99,19 +99,38 @@ li a {
     padding-bottom: 1;
 }
 li a:hover{
-    background-color: rgb(240, 52, 0);
+    background-color: rgb(240, 88, 0);
 }
 
 /*Hoveddelen av siden*/
+main {
+    background-color: rgb(88, 88, 88);
+}
 
 .mainSub{
     font-family: "Newsheader";
     text-align: center;
-    background-image: linear-gradient(rgb(208, 80, 0), rgb(228, 58, 2));
+    background-image: linear-gradient(rgb(208, 121, 21), rgb(194, 48, 0));
     margin: 0;
-    padding: 10px;
+    padding: 30px;
     color: white;
-    text-shadow: 3px 3px black;
+    text-shadow:
+    2px 2px 2px black;
+    font-size: 30px;
+}
+.indexStoreHeader{
+    text-align: center;
+    font-family: "borisblack";
+    color: #b35215;
+    position: relative;
+    top: 10px;
+}
+.indexStoreHeader h3{
+    display: inline-block;
+    background-color: rgb(205, 196, 188);
+    padding: 15px;
+    margin-bottom: 0px;
+    border-radius: 10px;
 }
 
 .indexStore {  display: grid;
@@ -123,6 +142,7 @@ li a:hover{
     grid-template-areas:
       "left main right";
     font-family: "TF2Secondary";
+
 }
   
 .indexStoreArea { grid-area: main; }
@@ -145,6 +165,9 @@ li a:hover{
       "e f g h"
       "i j k l"
       "m n o p";
+    background-color: rgb(205, 196, 188);
+    padding: 15px;
+    border-radius: 10px;
 }
   
 .a { grid-area: a; }
@@ -182,20 +205,30 @@ li a:hover{
 
 .storeItem{
     margin: 10px;
-}
-.storeItem p{
-    margin: 0px;
-    font-family: "tf2Build";
-    color: rgb(214, 214, 39);
-}
-.storeItem img{
     background-color: rgb(71, 64, 56);
     border-radius: 10px;
     padding: 1px 10px;
 }
-.storeItem img:hover{
+.storeItem:hover{
     background-color: rgb(149, 149, 149);
 }
+.storeItem p{
+    margin: 0px;
+    font-family: "tf2Build";
+    color: rgb(219, 219, 21);
+}
+.storeItem p.price{
+    color: rgb(0, 169, 0);
+}
+.storeItem img{
+    /*background-color: rgb(71, 64, 56);*/
+    border-radius: 10px;
+    padding: 1px 10px;
+}
+/*
+.storeItem img:hover{
+    background-color: rgb(149, 149, 149);
+}*/
 .indexToProducts a{
     text-decoration: none;
     font-family: "TF2Build";
@@ -226,3 +259,26 @@ li a:hover{
   
 .right { grid-area: right; }
 
+.footerContainer {  display: grid;
+    grid-template-columns: 0.3fr 1.2fr 0.9fr;
+    grid-template-rows: 0.5fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "footerLeft footerLogo footerRight";
+    background-color: rgb(71, 71, 71);
+}
+  
+.footerLeft { grid-area: footerLeft; }
+  
+.footerLogo { grid-area: footerLogo; }
+  
+.footerRight { grid-area: footerRight; }
+  
+.footerLeft img{
+    filter: invert(100%);
+    padding: 20px;
+}
+footer p{
+    color: rgb(179, 179, 179);
+}
