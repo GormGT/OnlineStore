@@ -101,6 +101,9 @@ li a {
 li a:hover{
     background-color: rgb(240, 88, 0);
 }
+.selectedTab{
+    background-color: rgb(185, 78, 39);
+}
 
 /*Hoveddelen av siden*/
 main {
@@ -281,4 +284,44 @@ main {
 }
 footer p{
     color: rgb(179, 179, 179);
+}
+
+/*-----------------------------------Styles for the account pages----------------------------------*/
+
+h1.accountMainHeader {
+    font-family: "bebasregular";
+    margin: 0;
+    padding: 30px;
+    color: rgb(236, 236, 236);
+}
+form.loginForm {
+    padding: 40px;
+    font-family: "tf2secondary";
+    color: rgb(236, 236, 236);
+    font-size: 25px;
+}
+.loginAccountCreate {
+    font-family: "tf2secondary";
+    padding: 40px;
+    padding-top: 0px;
+    color: rgb(236, 236, 236);
+}
+.loginAccountCreate p{
+    margin: 0;
+    font-size: 25px;
+}
+
+
+.accountCreateForm{
+    color: rgb(236, 236, 236);
+    font-family: "tf2secondary";
+    padding: 30px;
+    padding-top: 0;
+}
+.accountSecondHeader {
+    font-family: "tf2build";
+    color: rgb(236, 236, 236);
+    margin: 0;
+    padding: 30px;
+    padding-left: 0;
 }

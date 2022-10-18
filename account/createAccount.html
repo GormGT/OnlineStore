@@ -1,27 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Passwords</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2803e0bd27.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Opprett bruker</title>
 </head>
 <body>
-    <h1>Make a secure password</h1>
-    <form onsubmit="event.preventDefault();">
+    <div class="navbar">
+        <ul class="navbar">
+            <li class="navLeft"> <a href="../index.html"> <img class="grid-navbar-element" src="../img/logo.png" alt="Mann co logo" width="80px"></a></li>
+            <li class="navLeft"> <a href="../html/products.html" class="grid-navbar-element">Om oss</a></li>
+            <li class="navLeft"> <a href="../html/products.html" class="grid-navbar-element">Produkter</a></li>
+            <li class="navRight"><a href="../account/login.html" class="grid-navbar-element selectedTab">Logg inn</a></li>
+            <li class="navRight"> <a href="../html/checkout.html" class="grid-navbar-element"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        </ul>
+    </div>
+    <h1 class="accountMainHeader">Opprett en Mann.co bruker</h1>
 
-        <p>Type a password:</p>
+    <form onsubmit="event.preventDefault();" class="accountCreateForm">
+
+        <label>Lag et brukernavn:</label>
+        <input id="userInput1" type="text">
+        <p id="usernameFieldLabel"></p>
+        <br>
+        <label>Skriv inn din Email:</label>
+        <input id="userInput2" type="email">
+        <p id="emailFieldLabel"></p>
+        <br>
+        <h2 class="accountSecondHeader">Lag et sikkert passord:</h2>
+
+        <label>Skriv inn passord:</label>
         <input id="input1" type="password">
         <p id="firstFieldLabel"></p>
         <br>
-        <p>Repeat password:</p>
+        <label>Gjenta passord:</label>
         <input id="input2" type="password">
         <p id="secondFieldLabel"></p>
         <br>
-        <br>
-        <button type="submit" onclick="checkPassword()">Submit</button>
+        <button type="submit" onclick="checkPassword()">Opprett bruker</button>
 
     </form>
+
+    <footer class="footerContainer"><!--Add gradient to footer-->
+        <div class="footerLeft">
+            <img src="../img/logo.png" width="200px" alt="Mann.co logo">
+        </div>
+        <div class="footerLogo">
+            <p>© Valve Corporation, all rights reserved. Valve, the Valve logo, Steam, the Steam logo, Team Fortress, the Team Fortress logo are trademarks and/or registered trademarks of Valve Corporation.</p>
+        </div>
+        <div class="footerRight"></div>
+    </footer>
+
+    <script src="../js/index.js"></script>
     <script src='script.js'></script>
 </body>
 </html>

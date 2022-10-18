@@ -1,16 +1,42 @@
 let firstLabel = document.getElementById("firstFieldLabel");
 let secondLabel = document.getElementById("secondFieldLabel");
-const passCheck = /(?=.*[A-Z])(?=.*[0-9])(?=.*[/\W|_/])(?=.{13,})/;
+let userLabel = document.getElementById("usernameFieldLabel");
+let emailLabel = document.getElementById("emailFieldLabel");
+
+const usernameCheck = /^.{4,}$/u;
+//Need to create an emailcheck constant
+
+const passCheck = /^(?=.*?\p{Lu})(?=.*?[0-9])(?=.*?[\W|_]).{13,}$/u;
+
 let failAtts = 0;
+
+function checkUserDetail(){
+    var username = document.getElementById("userInput1").value;
+    var email = document.getElementById("userInput2").value;
+
+    if (username == ""){
+        userLabel.innerText = "Du har ikke skrevet inn et brukernavn...";
+    } else if (email == ""){
+        emailLabel.innerText = "Du har ikke skrevet inn en email..."
+    }
+
+    if(usernameCheck.test(username) == false){
+        userLabel.innerText = "Brukernavnet ditt må ha minst 4 bokstaver";
+    } else if (emailCheck.test(email) == false){
+        emailLabel.innerText = "Ugyldig email";
+    }
+}
+
 
 function checkPassword(){
     var firstPassword = document.getElementById("input1").value;
     var secondPassword = document.getElementById("input2").value;
     //DEBUGGING PURPOSES ONLY!!
     //console.log(firstPassword);
+    checkUserDetail();
 
     if (firstPassword == ""){
-        firstLabel.innerText = "You haven't even written anything...";
+        firstLabel.innerText = "Du har ikke skrevet noe..";
         return;
     }
     else{
@@ -22,7 +48,7 @@ function checkPassword(){
     }
 
     if (passCheck.test(firstPassword) == false){
-        firstLabel.innerText = 'Your password must be at least 13 characters long, and must contain at least one number, symbol and uppercase letter.'
+        firstLabel.innerText = 'Passordet ditt må være minst 13 bokstaver langt og inneholde minst ett tall, symbol og stor bokstav.'
         failAtts++;
         return;
     }
@@ -34,7 +60,7 @@ function checkPassword(){
         window.location.replace('success.html');
     }
     else{
-        secondLabel.innerText = 'Passwords do not match';
+        secondLabel.innerText = 'Passordene er ikke like';
         return;
     }
     
