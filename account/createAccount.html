@@ -18,31 +18,36 @@
             <li class="navRight"> <a href="../html/checkout.html" class="grid-navbar-element"><i class="fa-solid fa-cart-shopping"></i></a></li>
         </ul>
     </div>
-    <h1 class="accountMainHeader">Opprett en Mann.co bruker</h1>
 
-    <form onsubmit="event.preventDefault();" class="accountCreateForm">
 
-        <label>Lag et brukernavn:</label>
-        <input id="userInput1" type="text">
-        <p id="usernameFieldLabel"></p>
-        <br>
-        <label>Skriv inn din Email:</label>
-        <input id="userInput2" type="email">
-        <p id="emailFieldLabel"></p>
-        <br>
-        <h2 class="accountSecondHeader">Lag et sikkert passord:</h2>
+    <main>
 
-        <label>Skriv inn passord:</label>
-        <input id="input1" type="password">
-        <p id="firstFieldLabel"></p>
-        <br>
-        <label>Gjenta passord:</label>
-        <input id="input2" type="password">
-        <p id="secondFieldLabel"></p>
-        <br>
-        <button type="submit" onclick="checkPassword()">Opprett bruker</button>
+        <h1 class="accountMainHeader">Opprett en Mann.co bruker</h1>
 
-    </form>
+        <form onsubmit="event.preventDefault();" class="accountCreateForm">
+
+            <label>Lag et brukernavn:</label>
+            <input id="userInput1" type="text">
+            <p id="usernameFieldLabel"></p>
+            <br>
+            <label>Skriv inn din Email:</label>
+            <input id="userInput2" type="email">
+            <p id="emailFieldLabel"></p>
+            <br>
+            <h2 class="accountSecondHeader">Lag et sikkert passord:</h2>
+
+            <label>Skriv inn passord:</label>
+            <input id="input1" type="password">
+            <p id="firstFieldLabel"></p>
+            <br>
+            <label>Gjenta passord:</label>
+            <input id="input2" type="password">
+            <p id="secondFieldLabel"></p>
+            <br>
+            <button type="submit" class="accountButton" onclick="checkPassword()">Opprett bruker</button>
+
+        </form>
+    </main>
 
     <footer class="footerContainer"><!--Add gradient to footer-->
         <div class="footerLeft">

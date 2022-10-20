@@ -4,8 +4,8 @@ let userLabel = document.getElementById("usernameFieldLabel");
 let emailLabel = document.getElementById("emailFieldLabel");
 
 const usernameCheck = /^.{4,}$/u;
-//Need to create an emailcheck constant
-
+//The emailCheck regex SHOULD filter out invalid emails as per RFC2822 standard, however there is a chance for valid emails getting filtered due to lack of testing
+const emailCheck = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 const passCheck = /^(?=.*?\p{Lu})(?=.*?[0-9])(?=.*?[\W|_]).{13,}$/u;
 
 let failAtts = 0;
@@ -16,14 +16,24 @@ function checkUserDetail(){
 
     if (username == ""){
         userLabel.innerText = "Du har ikke skrevet inn et brukernavn...";
-    } else if (email == ""){
-        emailLabel.innerText = "Du har ikke skrevet inn en email..."
+        return;
+    } else {
+        userLabel.innerText = "";
+    }
+    
+    if (email == ""){
+        emailLabel.innerText = "Du har ikke skrevet inn en email...";
+        return;
+    } else {
+        emailLabel.innerText = "";
     }
 
     if(usernameCheck.test(username) == false){
         userLabel.innerText = "Brukernavnet ditt må ha minst 4 bokstaver";
+        return;
     } else if (emailCheck.test(email) == false){
         emailLabel.innerText = "Ugyldig email";
+        return;
     }
 }
 

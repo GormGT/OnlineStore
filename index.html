@@ -21,14 +21,34 @@
         </ul>
     </div>
 
-    <header class="headCont">
-        <div class="mainHead">
-            <h1>Velkommen til <span>MANN.CO</span> sin nettbutikk!</h1>
+    <header class="headCarouselContainer">
+
+        <div class="headCont carouselElement carouselFade">
+            <img src="/img/indexBack.png" width="100%" alt="bakgrunnsbilde av en bygning">
+            <div class="mainHead">
+                <h1 class="carouselText">Velkommen til <span>MANN.CO</span> sin nettbutikk!</h1>
+            </div>
         </div>
-        <img src="/img/indexBack.png" width="100%">
+
+        <div class="headCont carouselElement carouselFade">
+            <img src="/img/TestSlide.png" width="100%" alt="bakgrunnsbilde av en bygning">
+            <div class="mainHead">
+                <h1 class="carouselText">Slide 2</h1>
+            </div>
+        </div>
+
+        <div class="headCont carouselElement carouselFade">
+            <img src="/img/TestSlide.png" width="100%" alt="bakgrunnsbilde av en bygning">
+            <div class="mainHead">
+                <h1 class="carouselText">Slide 3</h1>
+            </div>
+        </div>
+
+        <a class="carouselPrev" onclick="plusSlides(-1)"><i class="fa-solid fa-chevron-left"></i></a>
+        <a class="carouselNext" onclick="plusSlides(1)"><i class="fa-solid fa-chevron-right"></i></a>
     </header>
 
-    <main>
+    <main class="indexMain">
         <div>
             <h2 class="mainSub">HER FINNER DU DE BESTE PRODUKTENE TIL ALT DU KAN TENKE DEG!</h2>
         </div>

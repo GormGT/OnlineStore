@@ -109,6 +109,10 @@ li a:hover{
 main {
     background-color: rgb(88, 88, 88);
 }
+/*.indexMain {
+    background-image: url("/img/Tf2Bric.png");
+    background-repeat: no-repeat;
+}*//*Work on this when time. Adds a background image to the main index page instead of a solid color, similar to the official TF2 website*/
 
 .mainSub{
     font-family: "Newsheader";
@@ -135,6 +139,49 @@ main {
     margin-bottom: 0px;
     border-radius: 10px;
 }
+/*--------------Styles for the index image carousel-------------------*/
+.headCarouselContainer {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Hide the images by default */
+  .carouselElement {
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+  .carouselPrev, .carouselNext {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .carouselNext {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .carouselPrev:hover, .carouselNext:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+
+
+
+
+
 
 .indexStore {  display: grid;
     grid-template-columns: 0.5fr 2fr 0.5fr;
@@ -232,6 +279,7 @@ main {
 .storeItem img:hover{
     background-color: rgb(149, 149, 149);
 }*/
+/*Classes and grid system for the button that leads to the products page from the index page*/
 .indexToProducts a{
     text-decoration: none;
     font-family: "TF2Build";
@@ -246,8 +294,8 @@ main {
 }
 .indexToProducts {  
     display: grid;
-    grid-template-columns: 0.9fr 1.2fr 0.9fr;
-    grid-template-rows: 1.2fr 0.5fr 1.3fr;
+    grid-template-columns: 1.1fr 1.0fr 1.1fr;
+    grid-template-rows: 1.2fr 0.6fr 1.3fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -262,6 +310,8 @@ main {
   
 .right { grid-area: right; }
 
+
+/*Footer classes and grid system*/
 .footerContainer {  display: grid;
     grid-template-columns: 0.3fr 1.2fr 0.9fr;
     grid-template-rows: 0.5fr;
@@ -298,7 +348,7 @@ form.loginForm {
     padding: 40px;
     font-family: "tf2secondary";
     color: rgb(236, 236, 236);
-    font-size: 25px;
+    font-size: 20px;
 }
 .loginAccountCreate {
     font-family: "tf2secondary";
@@ -308,7 +358,7 @@ form.loginForm {
 }
 .loginAccountCreate p{
     margin: 0;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 
@@ -318,10 +368,27 @@ form.loginForm {
     padding: 30px;
     padding-top: 0;
 }
+.accountCreateForm label{
+    font-size: 20px;
+}
 .accountSecondHeader {
     font-family: "tf2build";
     color: rgb(236, 236, 236);
     margin: 0;
     padding: 30px;
     padding-left: 0;
+    font-size: 18px;
+}
+.accountButton {
+    padding: 16px;
+    color: white;
+    font-family: "tf2build";
+    font-size: 16px;
+    background-color: rgb(104, 104, 104);
+    border: none;
+    border-radius: 5px;
+}
+.accountButton:hover{
+    background-color: rgb(50, 50, 50);
+    cursor: pointer;
 }
