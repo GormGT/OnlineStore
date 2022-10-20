@@ -1,3 +1,5 @@
+/* ---------------Functionality for the index image carousel---------- */
+
 let slideIndex = 1;
 showSlides(slideIndex);
 

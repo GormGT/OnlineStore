@@ -392,3 +392,95 @@ form.loginForm {
     background-color: rgb(50, 50, 50);
     cursor: pointer;
 }
+
+/*------------------Styles for the main store page-----------------------*/
+
+.mainStore {  
+    display: grid;
+    grid-template-columns: 0.3fr 0.7fr 2.4fr 0.6fr;
+    grid-template-rows: 0.4fr 2.3fr 0.3fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . . ."
+      ". mainStoreNav mainStoreArea ."
+      ". . . .";
+}
+  
+.mainStoreArea { grid-area: mainStoreArea; }
+  
+.mainStoreNav { grid-area: mainStoreNav; }
+
+
+.mainStoreArea {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-columns: 1fr;
+    text-align: center;
+    grid-auto-rows: 1fr;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "slot1 slot2 slot3 slot4"
+      "slot5 slot6 slot7 slot8"
+      "slot9 slot10 slot11 slot12"
+      "slot13 slot14 slot15 slot16";
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .slot1 { grid-area: slot1; }
+  
+  .slot2 { grid-area: slot2; }
+  
+  .slot3 { grid-area: slot3; }
+  
+  .slot4 { grid-area: slot4; }
+  
+  .slot5 { grid-area: slot5; }
+  
+  .slot6 { grid-area: slot6; }
+  
+  .slot7 { grid-area: slot7; }
+  
+  .slot8 { grid-area: slot8; }
+  
+  .slot9 { grid-area: slot9; }
+  
+  .slot10 { grid-area: slot10; }
+  
+  .slot11 { grid-area: slot11; }
+  
+  .slot12 { grid-area: slot12; }
+  
+  .slot13 { grid-area: slot13; }
+  
+  .slot14 { grid-area: slot14; }
+  
+  .slot15 { grid-area: slot15; }
+  
+  .slot16 { grid-area: slot16; }
+  
+
+.mainStoreNav {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "popularCat"
+      "typeCat"
+      "qualityCat"
+      "priceCat"
+      ".";
+}
+  
+.popularCat { grid-area: popularCat; }
+  
+.typeCat { grid-area: typeCat; }
+  
+.qualityCat { grid-area: qualityCat; }
+  
+.priceCat { grid-area: priceCat; }
+  
