@@ -253,11 +253,14 @@ main {
 .p { grid-area: p; }
   
 
-.storeItem{
+.storeItem{ /*Reccomended height for each store item: 177px*/
     margin: 10px;
     background-color: rgb(71, 64, 56);
     border-radius: 10px;
-    padding: 1px 10px;
+    padding: 10px 10px;
+    height: 177px;
+    border-style: solid;
+    border-color: rgb(219, 219, 21);
 }
 .storeItem:hover{
     background-color: rgb(149, 149, 149);
@@ -279,6 +282,14 @@ main {
 .storeItem img:hover{
     background-color: rgb(149, 149, 149);
 }*/
+
+.addCartBtn{
+    display: none;
+    position: absolute;
+}
+.storeItem:hover .addCartBtn {
+    display: block;
+}
 /*Classes and grid system for the button that leads to the products page from the index page*/
 .indexToProducts a{
     text-decoration: none;
@@ -531,12 +542,16 @@ form.loginForm {
 }
 .dropdownContent a{
     color: rgb(255, 255, 255);
-     padding: 12px 16px;
+    padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
+.dropdownContent a:hover{
+    text-decoration: underline;
+}
 .dropdownContent input {
     margin: 10px;
+    margin-right: 0px;
 }
 .dropdownContent p {
     font-family: "tf2build";
@@ -544,6 +559,3 @@ form.loginForm {
 .show {
     display: block;
 }
-/*.dropdownContain:hover .dropdownContent{
-    display: block;
-}*/
