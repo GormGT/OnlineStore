@@ -201,9 +201,21 @@ main {
   
 .right { grid-area: right; }
   
-.indexStoreArea {  
+.indexStoreArea {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    text-align: center;
+    grid-template-areas:
+      ". . . ."
+      ". . . ."
+      ". . . ."
+      ". . . .";     
+    /*display: grid;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
@@ -214,13 +226,13 @@ main {
       "a b c d"
       "e f g h"
       "i j k l"
-      "m n o p";
+      "m n o p";*/
     background-color: rgb(205, 196, 188);
     padding: 15px;
     border-radius: 10px;
 }
   
-.a { grid-area: a; }
+/*.a { grid-area: a; }
   
 .b { grid-area: b; }
   
@@ -250,7 +262,7 @@ main {
   
 .o { grid-area: o; }
   
-.p { grid-area: p; }
+.p { grid-area: p; }*/
   
 
 .storeItem{ /*Reccomended height for each store item: 177px*/
