@@ -24,7 +24,7 @@
 
         <h1 class="accountMainHeader">Opprett en Mann.co bruker</h1>
 
-        <form onsubmit="event.preventDefault();" class="accountCreateForm">
+        <form onsubmit="event.preventDefault()" class="accountCreateForm">
 
             <label>Lag et brukernavn:</label>
             <input id="userInput1" type="text">
@@ -61,6 +61,21 @@
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCxsXeZRLWcvewVjDiB7yZRVu2IOzlKBM0",
+                authDomain: "onlinestore-dccdb.firebaseapp.com",
+                projectId: "onlinestore-dccdb",
+                storageBucket: "onlinestore-dccdb.appspot.com",
+                messagingSenderId: "782536673763",
+                appId: "1:782536673763:web:25fd7d9fe6fc1b095178d6"
+            };
+            firebase.initializeApp(config);
+            const db = firebase.firestore();  
+    </script>
     <script src="../js/index.js"></script>
     <script src='script.js'></script>
 </body>

@@ -2,6 +2,7 @@ let firstLabel = document.getElementById("firstFieldLabel");
 let secondLabel = document.getElementById("secondFieldLabel");
 let userLabel = document.getElementById("usernameFieldLabel");
 let emailLabel = document.getElementById("emailFieldLabel");
+let accountCreateForm = document.querySelector(".accountCreateForm")
 
 const usernameCheck = /^.{4,}$/u;
 //The emailCheck regex SHOULD filter out invalid emails as per RFC2822 standard, however there is a chance for valid emails getting filtered due to lack of testing
@@ -67,9 +68,9 @@ function checkPassword(){
     }
 
     if (firstPassword == secondPassword){
-        window.location.replace('success.html');
-    }
-    else{
+        createAccount();
+        secondLabel.innerText = '';
+    }else{
         secondLabel.innerText = 'Passordene er ikke like';
         return;
     }
@@ -78,7 +79,26 @@ function checkPassword(){
 
 }
 
-let minuteCount = document.querySelector('span.minuteCounter');
+
+function createAccount(){
+    const account = {
+        userName: accountCreateForm.userInput1.value,
+        userMail: accountCreateForm.userInput2.value,
+        userPass: accountCreateForm.input1.value,
+        userType: 'customer'
+    }
+
+    db.collection('users').add(account).then(() => {
+        console.log('account created');
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
+
+//Leftover code from earlier project version
+
+/*let minuteCount = document.querySelector('span.minuteCounter');
 let secondCount = document.querySelector('span.secondCounter');
 
 function failTimer(){
@@ -91,7 +111,7 @@ function failTimer(){
     let unlockMin = unlockNum.getMinutes();
     console.log(unlockMin, unlockSec);
 
-}
+}*/
 
 
 

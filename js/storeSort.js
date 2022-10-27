@@ -1,9 +1,9 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
 
-const addStoreItem = (storeItem) => {
+const addStoreItem = (storeItem, id) => {
     let itemHtml =`
-    <div class="storeItem">
+    <div class="storeItem" itemID="${id}">
         <p class="itemName">${storeItem.itemName}</p>
         <img src="" height="120px" alt="">
         <p class="price">${storeItem.itemPrice}</p>
@@ -15,7 +15,7 @@ const addStoreItem = (storeItem) => {
 
 db.collection('storeItems').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
-        addStoreItem(doc.data());
+        addStoreItem(doc.data(), doc.id);
         //i++;
     })
 }).catch((err) => {
