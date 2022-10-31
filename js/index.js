@@ -20,7 +20,11 @@ function showDropdown(dropdown){
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.dropdownToggle') && !event.target.matches('.dropdownContent') && !event.target.matches('.dropdownContent input') && !event.target.matches('.dropdownContent label') && !event.target.matches('.dropdownContent p')) { //This is giving me a love hate relationship with W3 schools. Their code works really well for what it's designed for, but if you try to modify it slightly, you have to start adding ducttape solutions
+    if (!event.target.matches('.dropdownToggle')
+     && !event.target.matches('.dropdownContent')
+      && !event.target.matches('.dropdownContent input')
+       && !event.target.matches('.dropdownContent label')
+        && !event.target.matches('.dropdownContent p')) { //This is giving me a love hate relationship with W3 schools. Their code works really well for what it's designed for, but if you try to modify it slightly, you have to start adding ducttape solutions
       var dropdowns = document.getElementsByClassName("dropdownContent");
       var i;
       for (i = 0; i < dropdowns.length; i++) {

@@ -5,7 +5,7 @@ const addStoreItem = (storeItem, id) => {
     let itemHtml =`
     <div class="storeItem" itemID="${id}">
         <p class="itemName">${storeItem.itemName}</p>
-        <img src="" height="120px" alt="">
+        <img src="${storeItem.itemImg}" height="120px" alt="">
         <p class="price">${storeItem.itemPrice}</p>
     </div>
     `;
