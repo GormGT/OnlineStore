@@ -22,10 +22,10 @@
     <main>
         <h1 class="accountMainHeader">Logg inn med din Mann.co bruker</h1>
         <form onsubmit="event.preventDefault()" class="loginForm">
-            <label>Brukernavn:</label>
+            <!--<label>Brukernavn:</label>
             <input id="loginUsernameInput" type="text">
             <br>
-            <br>
+            <br>-->
             <label>Epost-adresse:</label>
             <input id="loginEmailInput" type="email">
             <br>
@@ -34,7 +34,8 @@
             <input id="loginPasswordInput" type="password">
             <br>
             <br>
-            <button id="loginButton" class="accountButton" type="submit">Logg inn</button>
+            <p id="loginLabel" class="incorrectLabelText"></p>
+            <button id="loginButton" class="accountButton" type="submit" onclick="login()">Logg inn</button>
         </form>
         <div class="loginAccountCreate">
             <p>Har du ikke en bruker?</p>
@@ -58,6 +59,22 @@
     </footer>
 
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCxsXeZRLWcvewVjDiB7yZRVu2IOzlKBM0",
+                authDomain: "onlinestore-dccdb.firebaseapp.com",
+                projectId: "onlinestore-dccdb",
+                storageBucket: "onlinestore-dccdb.appspot.com",
+                messagingSenderId: "782536673763",
+                appId: "1:782536673763:web:25fd7d9fe6fc1b095178d6"
+            };
+            firebase.initializeApp(config);
+            const db = firebase.firestore();  
+    </script>
+    <script src="Script.js"></script>
     <script src="../js/index.js"></script>
 </body>
 </html>

@@ -1,3 +1,51 @@
+//-----------------------------------------------Account login----------------------------------------------
+
+let loginLabel = document.getElementById("loginLabel");
+let loginCheck = false;
+
+const checkAccounts = (account/*, id*/) => {
+    let loginEmailInput = document.getElementById("loginEmailInput").value;
+    let loginPasswordInput = document.getElementById("loginPasswordInput").value;
+    //let userID = id;
+    let accountType = account.userType;
+    let accountEmail = account.userMail;
+    let accountPassword = account.userPass;
+    if (accountEmail === loginEmailInput && accountPassword === loginPasswordInput) {
+        console.log("Login successful");
+        loginCheck = true;
+        loginLabel.innerText = '';
+        if (accountType == "admin"){
+            window.location.assign('adminPage.html');
+        } else {
+            window.location.assign("../index.html");
+        }
+    }
+}
+
+const login = () => {
+    db.collection('users').get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            //Check if email and password matches any valid accounts in database
+            checkAccounts(doc.data(), doc.id);
+            //console.log(doc.data());
+
+        })
+        if (!loginCheck){
+            loginLabel.innerText = 'Ugyldig bruker';
+        }
+    }).catch((err) => {
+        console.log(err)
+    });
+
+}
+
+
+
+
+
+
+//-----------------------------------------------Account creation----------------------------------------------
+
 let firstLabel = document.getElementById("firstFieldLabel");
 let secondLabel = document.getElementById("secondFieldLabel");
 let userLabel = document.getElementById("usernameFieldLabel");
@@ -79,17 +127,19 @@ function checkPassword(){
 
 }
 
-
 function createAccount(){
     const account = {
         userName: accountCreateForm.userInput1.value,
         userMail: accountCreateForm.userInput2.value,
         userPass: accountCreateForm.input1.value,
-        userType: 'customer'
+        userType: 'kunde'
     }
 
     db.collection('users').add(account).then(() => {
         console.log('account created');
+        setTimeout(function(){
+            window.location.assign("account.html")
+        }, 2000)
     }).catch(err => {
         console.log(err);
     })

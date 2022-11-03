@@ -93,7 +93,7 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 14px;
     text-decoration: none;
     font-family: "TF2secondary";
     padding-bottom: 1;
@@ -426,6 +426,9 @@ form.loginForm {
 .accountButton:hover{
     background-color: rgb(50, 50, 50);
     cursor: pointer;
+}
+.incorrectLabelText{
+    color: red;
 }
 
 /*------------------Styles for the main store page-----------------------*/
