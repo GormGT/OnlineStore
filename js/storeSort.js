@@ -5,16 +5,19 @@ const addStoreItem = (storeItem, id) => {
     let itemHtml =`
     <div class="storeItem" itemID="${id}">
         <p class="itemName">${storeItem.itemName}</p>
-        <img src="${storeItem.itemImg}" height="120px" alt="">
+        <img src="${storeItem.itemImg}" height="120px" alt="Bilde av ${storeItem.itemName}">
         <p class="price">${storeItem.itemPrice}</p>
+        <button class="generalButton">Legg i handlekurv</button>
     </div>
     `;
     storeSlots.innerHTML += itemHtml;
+    //console.log(storeItem);
 }
 
 
 db.collection('storeItems').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id);
         //i++;
     })
@@ -22,7 +25,44 @@ db.collection('storeItems').get().then((snapshot) => {
     console.log(err)
 });
 
-//-------------------------------------------------------------Fallback storesort--------------------------------------------------------
+window.addEventListener("click", e => {
+    if (e.target.classList.contains("storeItem")){
+        let itemID = e.target.getAttribute("itemid");
+        localStorage.removeItem("viewedItem");
+        localStorage.setItem("viewedItem", itemID);
+        window.location.assign("../html/itemPage.html");
+    }
+});
+
+
+//Finish up this code if having the items being shown in a separate window 
+/*window.addEventListener("click", e => {
+    if (e.target.classList.contains("storeItem")) {
+      let windowID = e.target.getAttribute("itemid");
+      localStorage.removeItem("viewedItem");
+      redirectPage(windowID);
+      console.log('test');
+  
+    }
+});
+
+function redirectPage(windowID) {
+
+    window.location.assign("itemPage.html"); 
+    console.log("ID is = ", windowID);
+    localStorage.setItem("viewedItem", windowID);
+}*/
+
+
+
+/*function showStorePage(){
+    window.location.assign('../html/itemPage.html');
+    localStorage.setItem('viewedItem', undefined);
+}*/
+
+
+
+//-------------------------------------------------------------Legacy storesort--------------------------------------------------------
 
 //let storeSlots = Array.from(document.querySelector(".indexStoreArea").children);
 

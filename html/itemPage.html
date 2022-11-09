@@ -6,43 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/2803e0bd27.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/main.css">
-    <title>Logg inn</title>
+    <title>Produkter</title>
 </head>
 <body>
+
     <div class="navbar">
         <ul class="navbar">
             <li class="navLeft"> <a class="navbar-image"  href="../index.html"> <img class="grid-navbar-element" src="../img/logo.png" alt="Mann co logo" width="80px"></a></li>
             <li class="navLeft"> <a href="../html/about.html" class="grid-navbar-element">Om oss</a></li>
             <li class="navLeft"> <a href="../html/products.html" class="grid-navbar-element">Produkter</a></li>
-            <li class="navRight"><a href="../account/login.html" class="grid-navbar-element selectedTab">Logg inn</a></li>
+            <li class="navRight"><a class="loginButton" href="../account/login.html" class="grid-navbar-element">Logg inn</a></li>
             <li class="navRight"> <a href="../html/checkout.html" class="grid-navbar-element"><i class="fa-solid fa-cart-shopping"></i></a></li>
         </ul>
     </div>
 
     <main>
-        <h1 class="accountMainHeader">Logg inn med din Mann.co bruker</h1>
-        <form onsubmit="event.preventDefault()" class="loginForm">
-            <!--<label>Brukernavn:</label>
-            <input id="loginUsernameInput" type="text">
-            <br>
-            <br>-->
-            <label>Epost-adresse:</label>
-            <input id="loginEmailInput" type="email">
-            <br>
-            <br>
-            <label>Passord:</label>
-            <input id="loginPasswordInput" type="password">
-            <br>
-            <br>
-            <p id="loginLabel" class="incorrectLabelText"></p>
-            <button id="loginButton" class="accountButton" type="submit" onclick="login()">Logg inn</button>
-        </form>
-        <div class="loginAccountCreate">
-            <p>Har du ikke en bruker?</p>
-            <br>
-            <a href="../account/createAccount.html">
-                <button id="loginCreateAccount" class="accountButton" type="button">Opprett bruker</button>
-            </a>
+        <div class="itemPage">
+
         </div>
     </main>
 
@@ -57,7 +37,6 @@
             <a href="../html/about.html">Om oss</a>
         </div>
     </footer>
-
 
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script>
@@ -74,8 +53,10 @@
             firebase.initializeApp(config);
             const db = firebase.firestore();  
     </script>
-    <script src="Script.js"></script>
+    <script src="../js/storeItemPage.js"></script>
+    <script src="../js/loginCheck.js"></script>
+    <!--<script src="../js/storeItemLibrary.js"></script>-->
+    <!--<script src="../js/storeSort.js"></script>-->
     <script src="../js/index.js"></script>
-    <!--<script src="../js/loginCheck.js"></script>-->
 </body>
 </html>

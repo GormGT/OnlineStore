@@ -16,7 +16,6 @@ function currentSlide(n) {
 
 //The main function which changes between images
 function showSlides(n) {
-  let i;
   let slides = document.getElementsByClassName("carouselElement");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}

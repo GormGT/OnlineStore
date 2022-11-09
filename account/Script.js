@@ -3,7 +3,7 @@
 let loginLabel = document.getElementById("loginLabel");
 let loginCheck = false;
 
-const checkAccounts = (account/*, id*/) => {
+const checkAccounts = (account, id) => {
     let loginEmailInput = document.getElementById("loginEmailInput").value;
     let loginPasswordInput = document.getElementById("loginPasswordInput").value;
     //let userID = id;
@@ -13,11 +13,14 @@ const checkAccounts = (account/*, id*/) => {
     if (accountEmail === loginEmailInput && accountPassword === loginPasswordInput) {
         console.log("Login successful");
         loginCheck = true;
+        //localStorage.isLoggedIn = true;
+        sessionStorage.setItem('isLoggedIn', true);
         loginLabel.innerText = '';
+        sessionStorage.setItem('username', account.userName);
         if (accountType == "admin"){
-            window.location.assign('adminPage.html');
+            window.location.replace('adminPage.html');
         } else {
-            window.location.assign("../index.html");
+            window.location.replace("../index.html");
         }
     }
 }
