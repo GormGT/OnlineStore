@@ -11,13 +11,15 @@ const addStoreItem = (storeItem, id) => {
     </div>
     `;
     storeSlots.innerHTML += itemHtml;
-    //console.log(storeItem);
+    console.log(storeItem);
 }
 
-
+//To fetch items within subcollections, use storeItems/testDocument/testCollection1
+//TODO: Move all items into subcollections and display them on the page. Test how well it allows items from multiple collections to be viewed at the same page
 db.collection('storeItems').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
-        //console.log(snapshot.docs);
+        console.log(snapshot);
+        console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id);
         //i++;
     })
