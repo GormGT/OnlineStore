@@ -16,7 +16,8 @@ const addStoreItem = (storeItem, id) => {
 
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
 //TODO: Move all items into subcollections and display them on the page. Test how well it allows items from multiple collections to be viewed at the same page
-db.collection('storeItems').get().then((snapshot) => {
+//----------------------Weapons----------------------------
+db.collection('storeItems/weapons/stock').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
@@ -26,6 +27,111 @@ db.collection('storeItems').get().then((snapshot) => {
 }).catch((err) => {
     console.log(err)
 });
+db.collection('storeItems/weapons/common').get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+//----------------------Cosmetics----------------------------
+db.collection('storeItems/Cosmetics/vanlig').get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+db.collection('storeItems/Cosmetics/merc-grade').get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+db.collection('storeItems/Cosmetics/assassin-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+//----------------------War paints----------------------------
+db.collection('storeItems/warpaints/merc-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+db.collection('storeItems/warpaints/comm-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+db.collection('storeItems/warpaints/assassin-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+db.collection('storeItems/warpaints/elite-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+//----------------------Weapon effects----------------------------
+db.collection('storeItems/weaponFX/annet').get().then((snapshot) => { //There must be a more optimised way of doing this | I'm going to keep including this comment until I've optimised this
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+db.collection('storeItems/weaponFX/botkillers').get().then((snapshot) => { //There must be a more optimised way of doing this
+    snapshot.docs.forEach(doc => {
+        console.log(snapshot);
+        console.log(snapshot.docs);
+        addStoreItem(doc.data(), doc.id);
+        //i++;
+    })
+}).catch((err) => {
+    console.log(err)
+});
+
+
 
 window.addEventListener("click", e => {
     if (e.target.classList.contains("storeItem")){

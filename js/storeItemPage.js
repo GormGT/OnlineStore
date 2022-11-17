@@ -4,12 +4,16 @@ function test() {
 let itemLookup = localStorage.getItem("viewedItem")
 console.log(itemLookup);
 
+//TODO: make the storeItems string into a variable which changes to the path for the selected item
+//Figure out a way to only load the collection with the selected item
+//Maybe achieve this by adding the folder as a value to the items on the main store page??
 db.collection("storeItems").doc(itemLookup).get().then((snapshot) => {
   console.log(snapshot.data());
   showProdDetails(snapshot.data(), itemLookup)
 })};
 
 let itemPage = document.querySelector('.itemPage');
+let pageTitle = document.querySelector('.prodDocTitle');
 
 
 function showProdDetails(storeItem, id){
@@ -33,6 +37,8 @@ function showProdDetails(storeItem, id){
     </div>
     `;
     itemPage.innerHTML = itemHtml;
+    let titleHTML =`${storeItem.itemName} - MANN.CO Nettbutikk`;
+    pageTitle.innerText = titleHTML;
 }
 
 

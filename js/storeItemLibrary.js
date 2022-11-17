@@ -1,3 +1,5 @@
+//This is the original collection of storeitems featured on the page, before Firebase was implemented. For now this file is only used as a way to keep track of which stock items haven't been added to the database yet.
+
 //This file contains every fallback item available at the store as a javascript object. This is to make it possible to have dynamic store listings that can be sorted between, and make it easier to refer to each item later on
 
 
