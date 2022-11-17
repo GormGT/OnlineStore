@@ -1,13 +1,13 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
 
-const addStoreItem = (storeItem, id) => {
+const addStoreItem = (storeItem, id, type) => {
     let itemHtml =`
-    <div class="storeItem" itemID="${id}">
+    <div class="storeItem" itemType="${type}" itemID="${id}">
         <p class="itemName">${storeItem.itemName}</p>
         <img src="${storeItem.itemImg}" height="120px" alt="Bilde av ${storeItem.itemName}">
         <p class="price">${storeItem.itemPrice}</p>
-        <button class="generalButton">Legg i handlekurv</button>
+        <button class="itemBuyButton">Legg i handlekurv</button>
     </div>
     `;
     storeSlots.innerHTML += itemHtml;
@@ -15,13 +15,12 @@ const addStoreItem = (storeItem, id) => {
 }
 
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
-//TODO: Move all items into subcollections and display them on the page. Test how well it allows items from multiple collections to be viewed at the same page
 //----------------------Weapons----------------------------
 db.collection('storeItems/weapons/stock').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/weapons/stock");
         //i++;
     })
 }).catch((err) => {
@@ -31,7 +30,7 @@ db.collection('storeItems/weapons/common').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/weapons/common");
         //i++;
     })
 }).catch((err) => {
@@ -42,7 +41,7 @@ db.collection('storeItems/Cosmetics/vanlig').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/Cosmetics/vanlig");
         //i++;
     })
 }).catch((err) => {
@@ -52,7 +51,7 @@ db.collection('storeItems/Cosmetics/merc-grade').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/Cosmetics/merc-grade");
         //i++;
     })
 }).catch((err) => {
@@ -62,7 +61,7 @@ db.collection('storeItems/Cosmetics/assassin-grade').get().then((snapshot) => { 
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/Cosmetics/assassin-grade");
         //i++;
     })
 }).catch((err) => {
@@ -73,7 +72,7 @@ db.collection('storeItems/warpaints/merc-grade').get().then((snapshot) => { //Th
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/warpaints/merc-grade");
         //i++;
     })
 }).catch((err) => {
@@ -83,7 +82,7 @@ db.collection('storeItems/warpaints/comm-grade').get().then((snapshot) => { //Th
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/warpaints/comm-grade");
         //i++;
     })
 }).catch((err) => {
@@ -93,7 +92,7 @@ db.collection('storeItems/warpaints/assassin-grade').get().then((snapshot) => { 
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/warpaints/assassin-grade");
         //i++;
     })
 }).catch((err) => {
@@ -103,7 +102,7 @@ db.collection('storeItems/warpaints/elite-grade').get().then((snapshot) => { //T
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/warpaints/elite-grade");
         //i++;
     })
 }).catch((err) => {
@@ -114,7 +113,7 @@ db.collection('storeItems/weaponFX/annet').get().then((snapshot) => { //There mu
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/weaponFX/annet");
         //i++;
     })
 }).catch((err) => {
@@ -124,7 +123,7 @@ db.collection('storeItems/weaponFX/botkillers').get().then((snapshot) => { //The
     snapshot.docs.forEach(doc => {
         console.log(snapshot);
         console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id);
+        addStoreItem(doc.data(), doc.id, "/weaponFX/botkillers");
         //i++;
     })
 }).catch((err) => {
@@ -136,37 +135,24 @@ db.collection('storeItems/weaponFX/botkillers').get().then((snapshot) => { //The
 window.addEventListener("click", e => {
     if (e.target.classList.contains("storeItem")){
         let itemID = e.target.getAttribute("itemid");
+        let itemType = e.target.getAttribute("itemType");
         localStorage.removeItem("viewedItem");
+        localStorage.removeItem("itemType");
         localStorage.setItem("viewedItem", itemID);
+        localStorage.setItem("itemType", itemType);
         window.location.assign("../html/itemPage.html");
     }
 });
 
-
-//Finish up this code if having the items being shown in a separate window 
-/*window.addEventListener("click", e => {
-    if (e.target.classList.contains("storeItem")) {
-      let windowID = e.target.getAttribute("itemid");
-      localStorage.removeItem("viewedItem");
-      redirectPage(windowID);
-      console.log('test');
-  
+window.addEventListener("click", e => {
+    let shopButton = e.target;
+    if (shopButton.classList.contains("itemBuyButton")){
+        //console.log("Stop clicking me");
+        shopButton.innerText = "I handlekurv";
+        shopButton.setAttribute("disabled", true);
+        shopButton.style.backgroundColor = "rgb(50, 50, 50)";
     }
 });
-
-function redirectPage(windowID) {
-
-    window.location.assign("itemPage.html"); 
-    console.log("ID is = ", windowID);
-    localStorage.setItem("viewedItem", windowID);
-}*/
-
-
-
-/*function showStorePage(){
-    window.location.assign('../html/itemPage.html');
-    localStorage.setItem('viewedItem', undefined);
-}*/
 
 
 

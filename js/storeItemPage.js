@@ -1,15 +1,17 @@
 test();
 
 function test() {
-let itemLookup = localStorage.getItem("viewedItem")
-console.log(itemLookup);
+  let itemLookup = localStorage.getItem("viewedItem")
+  let itemPath = localStorage.getItem("itemType")
+  console.log(itemLookup);
+  console.log(itemPath);
 
-//TODO: make the storeItems string into a variable which changes to the path for the selected item
-//Figure out a way to only load the collection with the selected item
-//Maybe achieve this by adding the folder as a value to the items on the main store page??
-db.collection("storeItems").doc(itemLookup).get().then((snapshot) => {
-  console.log(snapshot.data());
-  showProdDetails(snapshot.data(), itemLookup)
+  //TODO: make the storeItems string into a variable which changes to the path for the selected item
+  //Figure out a way to only load the collection with the selected item
+  //Maybe achieve this by adding the folder as a value to the items on the main store page??
+  db.collection(`storeItems${itemPath}`).doc(itemLookup).get().then((snapshot) => {
+    console.log(snapshot.data());
+    showProdDetails(snapshot.data(), itemLookup)
 })};
 
 let itemPage = document.querySelector('.itemPage');
@@ -31,8 +33,13 @@ function showProdDetails(storeItem, id){
                 <a class="miniCarouselPrev carouselButton" onclick="plusSlides(-1)"><i class="fa-solid fa-chevron-left"></i></a>
                 <a class="miniCarouselNext carouselButton" onclick="plusSlides(1)"><i class="fa-solid fa-chevron-right"></i></a>-->
             </div>
-            <p class="detailsPrice">${storeItem.itemPrice}</p>
-            <button>Legg i handlevogn</button>
+            <div>
+              <p class="detailsDescription">${storeItem.itemDesc}</p>
+              <p class="detailsPrice">${storeItem.itemPrice}</p>
+            </div>
+            <div>
+              <button>Legg i handlevogn</button>
+            </div>
         </div>
     </div>
     `;
