@@ -638,11 +638,22 @@ form.loginForm {
 }
 
 /*------------------------------------------------------Styles for the individual store item pages--------------------------------------------*/
-
+.itemPageGoBack{
+    color: white;
+    font-family: "tf2secondary";
+    padding: 10px;
+    position: absolute;
+    width: 100px;
+    left: 10px;
+}
 .detailsName{
     font-size: 50px;
     text-align: center;
     font-family: "tf2build";
+    margin: 0;
+}
+.storePageDesc{
+    padding-top: 100px;
 }
 .detailsDescription{
     font-family: "tf2secondary";
@@ -651,6 +662,12 @@ form.loginForm {
 .detailsPrice{
     font-size: 40px;
     color: rgb(0, 169, 0);
+}
+.storePageAddCart{
+    width: 80%;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
 }
 .storePageGrid {  
     display: grid;
@@ -661,6 +678,7 @@ form.loginForm {
     grid-auto-flow: row;
     grid-template-areas:
       ". . .";
+    padding-top: 50px;
   }
   
 

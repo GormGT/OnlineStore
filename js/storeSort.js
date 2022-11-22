@@ -133,9 +133,22 @@ db.collection('storeItems/weaponFX/botkillers').get().then((snapshot) => { //The
 
 
 window.addEventListener("click", e => {
+    console.log(e.target.parentElement);
+    //let target = e.currentTarget;
+    //let parent = target.parentNode;
     if (e.target.classList.contains("storeItem")){
+        console.log("this element has an id");
         let itemID = e.target.getAttribute("itemid");
         let itemType = e.target.getAttribute("itemType");
+        localStorage.removeItem("viewedItem");
+        localStorage.removeItem("itemType");
+        localStorage.setItem("viewedItem", itemID);
+        localStorage.setItem("itemType", itemType);
+        window.location.assign("../html/itemPage.html");
+    }else if (e.target.parentElement.classList.contains("storeItem")){ //make it ignore the cart button
+        console.log("this element's parent has an id");
+        let itemID = e.target.parentElement.getAttribute("itemid");
+        let itemType = e.target.parentElement.getAttribute("itemType");
         localStorage.removeItem("viewedItem");
         localStorage.removeItem("itemType");
         localStorage.setItem("viewedItem", itemID);

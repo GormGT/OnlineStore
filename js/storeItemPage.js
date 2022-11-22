@@ -20,6 +20,7 @@ let pageTitle = document.querySelector('.prodDocTitle');
 
 function showProdDetails(storeItem, id){
     let itemHtml =`
+    <a onclick="history.back()" class="itemPageGoBack generalButton">< Tilbake</a>
     <div class="itemPage" itemID="${id}">
         <p class="detailsName">${storeItem.itemName}</p>
         <div class="storePageGrid">
@@ -33,12 +34,12 @@ function showProdDetails(storeItem, id){
                 <a class="miniCarouselPrev carouselButton" onclick="plusSlides(-1)"><i class="fa-solid fa-chevron-left"></i></a>
                 <a class="miniCarouselNext carouselButton" onclick="plusSlides(1)"><i class="fa-solid fa-chevron-right"></i></a>-->
             </div>
-            <div>
+            <div class="storePageDesc">
               <p class="detailsDescription">${storeItem.itemDesc}</p>
               <p class="detailsPrice">${storeItem.itemPrice}</p>
             </div>
             <div>
-              <button class="generalButton">Legg i handlevogn</button>
+              <button class="generalButton storePageAddCart">Legg i handlevogn</button>
             </div>
         </div>
     </div>
