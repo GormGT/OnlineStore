@@ -25,10 +25,10 @@ function showProdDetails(storeItem, id){
         <div class="storePageGrid">
             <div class="miniCarousel">
                 <div class="miniCarouselElement">
-                    <img src="${storeItem.itemImg}" height="120px" alt="Bilde av ${storeItem.itemName}">
+                    <img class="detailsImg" src="${storeItem.itemImg}" height="300px" alt="Bilde av ${storeItem.itemName}">
                 </div>
                 <!--<div class="miniCarouselElement">
-                    <img src="../img/missing.png" height="120px" alt="Bilde av ${storeItem.itemName}">
+                    <img src="../img/missing.png" height="300px" alt="Bilde av ${storeItem.itemName}">
                 </div>
                 <a class="miniCarouselPrev carouselButton" onclick="plusSlides(-1)"><i class="fa-solid fa-chevron-left"></i></a>
                 <a class="miniCarouselNext carouselButton" onclick="plusSlides(1)"><i class="fa-solid fa-chevron-right"></i></a>-->
@@ -38,7 +38,7 @@ function showProdDetails(storeItem, id){
               <p class="detailsPrice">${storeItem.itemPrice}</p>
             </div>
             <div>
-              <button>Legg i handlevogn</button>
+              <button class="generalButton">Legg i handlevogn</button>
             </div>
         </div>
     </div>

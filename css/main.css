@@ -642,9 +642,15 @@ form.loginForm {
 .detailsName{
     font-size: 50px;
     text-align: center;
+    font-family: "tf2build";
+}
+.detailsDescription{
+    font-family: "tf2secondary";
+    color: white;
 }
 .detailsPrice{
     font-size: 40px;
+    color: rgb(0, 169, 0);
 }
 .storePageGrid {  
     display: grid;
@@ -657,7 +663,11 @@ form.loginForm {
       ". . .";
   }
   
-/*---Styles for the mini image carousel--*/
+
+
+
+
+/*-------Styles for the mini image carousel-------*/
 .miniCarousel {
     max-width: 100%;
     position: relative;
