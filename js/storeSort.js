@@ -133,7 +133,7 @@ db.collection('storeItems/weaponFX/botkillers').get().then((snapshot) => { //The
 
 
 window.addEventListener("click", e => {
-    console.log(e.target.parentElement);
+    //console.log(e.target.parentElement);
     //let target = e.currentTarget;
     //let parent = target.parentNode;
     if (e.target.classList.contains("storeItem")){
@@ -145,8 +145,16 @@ window.addEventListener("click", e => {
         localStorage.setItem("viewedItem", itemID);
         localStorage.setItem("itemType", itemType);
         window.location.assign("../html/itemPage.html");
-    }else if (e.target.parentElement.classList.contains("storeItem")){ //make it ignore the cart button
+    }else if(e.target.classList.contains("itemBuyButton")){
+        let shopButton = e.target;
+        //console.log("Stop clicking me");
+        shopButton.innerText = "I handlekurv";
+        shopButton.setAttribute("disabled", true);
+        shopButton.style.backgroundColor = "rgb(50, 50, 50)";
+    }
+    else if (e.target.parentElement.classList.contains("storeItem")){ //make it ignore the cart button
         console.log("this element's parent has an id");
+        //console.log(e.target);
         let itemID = e.target.parentElement.getAttribute("itemid");
         let itemType = e.target.parentElement.getAttribute("itemType");
         localStorage.removeItem("viewedItem");
@@ -157,7 +165,7 @@ window.addEventListener("click", e => {
     }
 });
 
-window.addEventListener("click", e => {
+/*window.addEventListener("click", e => {
     let shopButton = e.target;
     if (shopButton.classList.contains("itemBuyButton")){
         //console.log("Stop clicking me");
@@ -165,7 +173,7 @@ window.addEventListener("click", e => {
         shopButton.setAttribute("disabled", true);
         shopButton.style.backgroundColor = "rgb(50, 50, 50)";
     }
-});
+});*/
 
 
 

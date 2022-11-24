@@ -43,6 +43,7 @@ body {
 .generalButton:hover{
     background-color: rgb(50, 50, 50);
     cursor: pointer;
+    transition-duration: 0.1s;
 }
 .itemBuyButton{
     text-decoration: none;
@@ -58,6 +59,7 @@ body {
 .itemBuyButton:hover{
     background-color: rgb(50, 50, 50);
     cursor: pointer;
+    transition-duration: 0.1s;
 }
 
 /*Define the main grid containers*/

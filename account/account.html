@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2803e0bd27.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Bruker - MANN.CO Nettbutikk</title>
+</head>
+<body>
+    <div class="navbar">
+        <ul class="navbar">
+            <li class="navLeft"> <a class="navbar-image"  href="../index.html"> <img class="grid-navbar-element" src="../img/logo.png" alt="Mann co logo" width="80px"></a></li>
+            <li class="navLeft"> <a href="../html/about.html" class="grid-navbar-element">Om oss</a></li>
+            <li class="navLeft"> <a href="../html/products.html" class="grid-navbar-element">Produkter</a></li>
+            <li class="navRight"><a class="loginButton" href="account/login.html" class="grid-navbar-element selectedTab">Logg inn</a></li>
+            <li class="navRight"> <a href="../html/checkout.html" class="grid-navbar-element"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        </ul>
+    </div>
+    
+
+
+
+
+    <footer class="footerContainer"><!--Add gradient to footer-->
+        <div class="footerLeft">
+            <img src="../img/logo.png" width="200px" alt="Mann.co logo">
+        </div>
+        <div class="footerLogo">
+            <p>© Valve Corporation, all rights reserved. Valve, the Valve logo, Steam, the Steam logo, Team Fortress, the Team Fortress logo are trademarks and/or registered trademarks of Valve Corporation.</p>
+        </div>
+        <div class="footerRight">
+            <a href="html/about.html">Om oss</a>
+        </div>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCxsXeZRLWcvewVjDiB7yZRVu2IOzlKBM0",
+                authDomain: "onlinestore-dccdb.firebaseapp.com",
+                projectId: "onlinestore-dccdb",
+                storageBucket: "onlinestore-dccdb.appspot.com",
+                messagingSenderId: "782536673763",
+                appId: "1:782536673763:web:25fd7d9fe6fc1b095178d6"
+            };
+            firebase.initializeApp(config);
+            const db = firebase.firestore();  
+    </script>
+    <script src="../js/loginCheck.js"></script>
+    <!--<script src="Script.js"></script>
+    <script src="../js/index.js"></script>-->
+</body>
+</html>
