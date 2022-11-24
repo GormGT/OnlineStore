@@ -24,6 +24,7 @@ function showProdDetails(storeItem, id){
     <div class="itemPage" itemID="${id}">
         <p class="detailsName">${storeItem.itemName}</p>
         <div class="storePageGrid">
+            <div></div>
             <div class="miniCarousel">
                 <div class="miniCarouselElement">
                     <img class="detailsImg" src="${storeItem.itemImg}" height="300px" alt="Bilde av ${storeItem.itemName}">
@@ -39,8 +40,14 @@ function showProdDetails(storeItem, id){
               <p class="detailsPrice">${storeItem.itemPrice}</p>
             </div>
             <div>
+              <div class="storePageAddCartAmnt">
+                <button for="storePageItemCartAmnt" class="generalButton storePageAmntButton">-</button>
+                <input type="number" id="storePageItemCartAmnt"></input>
+                <button for="storePageItemCartAmnt" class="generalButton storePageAmntButton">+</button>
+              </div>
               <button class="generalButton storePageAddCart">Legg i handlevogn</button>
             </div>
+            <div></div>
         </div>
     </div>
     `;
