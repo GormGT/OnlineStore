@@ -151,6 +151,7 @@ window.addEventListener("click", e => {
         shopButton.innerText = "I handlekurv";
         shopButton.setAttribute("disabled", true);
         shopButton.style.backgroundColor = "rgb(50, 50, 50)";
+        shopButton.disabled = true;
     }
     else if (e.target.parentElement.classList.contains("storeItem")){ //make it ignore the cart button
         console.log("this element's parent has an id");
