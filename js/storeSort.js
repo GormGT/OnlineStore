@@ -11,15 +11,15 @@ const addStoreItem = (storeItem, id, type) => {
     </div>
     `;
     storeSlots.innerHTML += itemHtml;
-    console.log(storeItem);
+    //console.log(storeItem);
 }
 
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
 //----------------------Weapons----------------------------
 db.collection('storeItems/weapons/stock').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/weapons/stock");
         //i++;
     })
@@ -28,8 +28,8 @@ db.collection('storeItems/weapons/stock').get().then((snapshot) => {
 });
 db.collection('storeItems/weapons/common').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/weapons/common");
         //i++;
     })
@@ -39,8 +39,8 @@ db.collection('storeItems/weapons/common').get().then((snapshot) => {
 //----------------------Cosmetics----------------------------
 db.collection('storeItems/Cosmetics/vanlig').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/Cosmetics/vanlig");
         //i++;
     })
@@ -49,8 +49,8 @@ db.collection('storeItems/Cosmetics/vanlig').get().then((snapshot) => {
 });
 db.collection('storeItems/Cosmetics/merc-grade').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/Cosmetics/merc-grade");
         //i++;
     })
@@ -59,8 +59,8 @@ db.collection('storeItems/Cosmetics/merc-grade').get().then((snapshot) => {
 });
 db.collection('storeItems/Cosmetics/assassin-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/Cosmetics/assassin-grade");
         //i++;
     })
@@ -70,8 +70,8 @@ db.collection('storeItems/Cosmetics/assassin-grade').get().then((snapshot) => { 
 //----------------------War paints----------------------------
 db.collection('storeItems/warpaints/merc-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/warpaints/merc-grade");
         //i++;
     })
@@ -80,8 +80,8 @@ db.collection('storeItems/warpaints/merc-grade').get().then((snapshot) => { //Th
 });
 db.collection('storeItems/warpaints/comm-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/warpaints/comm-grade");
         //i++;
     })
@@ -90,8 +90,8 @@ db.collection('storeItems/warpaints/comm-grade').get().then((snapshot) => { //Th
 });
 db.collection('storeItems/warpaints/assassin-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/warpaints/assassin-grade");
         //i++;
     })
@@ -100,8 +100,8 @@ db.collection('storeItems/warpaints/assassin-grade').get().then((snapshot) => { 
 });
 db.collection('storeItems/warpaints/elite-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/warpaints/elite-grade");
         //i++;
     })
@@ -111,8 +111,8 @@ db.collection('storeItems/warpaints/elite-grade').get().then((snapshot) => { //T
 //----------------------Weapon effects----------------------------
 db.collection('storeItems/weaponFX/annet').get().then((snapshot) => { //There must be a more optimised way of doing this | I'm going to keep including this comment until I've optimised this
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/weaponFX/annet");
         //i++;
     })
@@ -121,8 +121,8 @@ db.collection('storeItems/weaponFX/annet').get().then((snapshot) => { //There mu
 });
 db.collection('storeItems/weaponFX/botkillers').get().then((snapshot) => { //There must be a more optimised way of doing this
     snapshot.docs.forEach(doc => {
-        console.log(snapshot);
-        console.log(snapshot.docs);
+        //console.log(snapshot);
+        //console.log(snapshot.docs);
         addStoreItem(doc.data(), doc.id, "/weaponFX/botkillers");
         //i++;
     })
@@ -137,7 +137,7 @@ window.addEventListener("click", e => {
     //let target = e.currentTarget;
     //let parent = target.parentNode;
     if (e.target.classList.contains("storeItem")){
-        console.log("this element has an id");
+        //console.log("this element has an id");
         let itemID = e.target.getAttribute("itemid");
         let itemType = e.target.getAttribute("itemType");
         localStorage.removeItem("viewedItem");
@@ -154,7 +154,7 @@ window.addEventListener("click", e => {
         shopButton.disabled = true;
     }
     else if (e.target.parentElement.classList.contains("storeItem")){ //make it ignore the cart button
-        console.log("this element's parent has an id");
+        //console.log("this element's parent has an id");
         //console.log(e.target);
         let itemID = e.target.parentElement.getAttribute("itemid");
         let itemType = e.target.parentElement.getAttribute("itemType");

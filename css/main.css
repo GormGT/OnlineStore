@@ -136,6 +136,8 @@ li a {
 }
 li a:hover{
     background-color: rgb(240, 88, 0);
+    transform: scale(1.1);
+    transition-duration: 0.1s;
 }
 .selectedTab{
     background-image: linear-gradient(rgb(188, 69, 0), rgb(235, 63, 0));
@@ -213,10 +215,6 @@ main {
   .carouselPrev:hover, .carouselNext:hover {
     background-color: rgba(0,0,0,0.8);
   }
-
-
-
-
 
 
 .indexStore {  display: grid;
