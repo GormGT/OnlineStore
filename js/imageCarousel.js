@@ -28,6 +28,6 @@ function showSlides(n) {
 
 
 //Automatically runs the plusSlides function to automate the slides
-setInterval( () => {
+let scrollInterval = setInterval(() => {
     plusSlides(1);
 }, 7000);

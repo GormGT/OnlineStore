@@ -1,5 +1,8 @@
 test();
 
+let PleaseWork;
+let budgetRegex;
+
 function test() {
   let itemLookup = localStorage.getItem("viewedItem")
   let itemPath = localStorage.getItem("itemType")
@@ -14,9 +17,14 @@ function test() {
     showProdDetails(snapshot.data(), itemLookup)
 })};
 
+setTimeout(() => {
+  console.log(PleaseWork);
+}, 4000)
+
 let itemPage = document.querySelector('.itemPage');
 let pageTitle = document.querySelector('.prodDocTitle');
 
+let storePageItemCartAmnt;
 
 function showProdDetails(storeItem, id){
     let itemHtml =`
@@ -41,9 +49,9 @@ function showProdDetails(storeItem, id){
             </div>
             <div>
               <div class="storePageAddCartAmnt">
-                <button for="storePageItemCartAmnt" class="generalButton storePageAmntButton">-</button>
-                <input type="number" id="storePageItemCartAmnt"></input>
-                <button for="storePageItemCartAmnt" class="generalButton storePageAmntButton">+</button>
+                <button for="storePageItemCartAmnt" onclick="increaseAmount('-')" class="generalButton storePageAmntButton">-</button>
+                <input type="number" id="storePageItemCartAmnt" value="1"></input>
+                <button for="storePageItemCartAmnt" onclick="increaseAmount('+')" class="generalButton storePageAmntButton">+</button>
               </div>
               <button class="generalButton storePageAddCart">Legg i handlevogn</button>
             </div>
@@ -54,9 +62,42 @@ function showProdDetails(storeItem, id){
     itemPage.innerHTML = itemHtml;
     let titleHTML =`${storeItem.itemName} - MANN.CO Nettbutikk`;
     pageTitle.innerText = titleHTML;
+    PleaseWork = defineField();
+    //console.log(PleaseWork);
+    budgetRegex = PleaseWork.addEventListener('input', () => {
+      if(PleaseWork.value.length > 2){
+        PleaseWork.value = PleaseWork.value.slice(0, 2);
+        //console.log('too long')
+      }else if(PleaseWork.value < 0){
+        PleaseWork.value = 0;
+      }
+    });
 }
 
+//Define the input field on the storepage
+function defineField(){
+  const storePageItemCartAmnt = document.querySelector('#storePageItemCartAmnt');
+  //console.log('Item defined');
+  return storePageItemCartAmnt;
+}
 
+let increaseAmount = (n) => {
+  if (n == '+'){
+    PleaseWork.value ++;
+  }else if (n == '-'){
+    PleaseWork.value --;
+  }
+  let numCheck = /^([0-9]){1,2}$/;
+  let maxLength = 99;
+
+  if(PleaseWork.value > maxLength){
+    //console.log("bruh");
+    PleaseWork.value = 99;
+  }else if(PleaseWork.value < 0){
+    PleaseWork.value = 0;
+    //console.log("test");
+  }
+}
 
 //Do this later. It's a function that is supposed to show/hide the carousel-buttons depending on if there is only a single image or not. However, it refuses to work no matter what, so I'm postponing it for now
 /*let carouselButtons = Array.from(document.getElementsByClassName('carouselButton'));//This isn't being defined correctly for some reason
