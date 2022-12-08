@@ -302,6 +302,7 @@ main {
 .storeItem{ /*Reccomended height for each store item: 177px*/
     margin: 10px;
     background-color: rgb(71, 64, 56);
+    /*background-color: rgb(54, 50, 45);*/
     border-radius: 10px;
     padding: 10px 10px;
     padding-bottom: 34px;

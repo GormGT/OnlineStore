@@ -1,5 +1,6 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
+let documentName = document.title;
 
 const addStoreItem = (storeItem, id, path) => {
     console.log(path);
@@ -48,20 +49,43 @@ const addStoreItem = (storeItem, id, path) => {
 
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
 const pathArray = ['/weapons/stock', '/weapons/common', '/Cosmetics/vanlig', '/Cosmetics/merc-grade', '/Cosmetics/assassin-grade', '/warpaints/merc-grade', '/warpaints/comm-grade', '/warpaints/assassin-grade', '/warpaints/elite-grade', '/weaponFX/annet', '/weaponFX/botkillers'];
-for(i = 0; i <= pathArray.length; i++){
-    //console.log(i);
-    let currentPath = pathArray[i];
-    db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
-        snapshot.docs.forEach(doc => {
-            //console.log(snapshot);
-            //console.log(snapshot.docs);
-            //console.log(pathArray[i]);
-            addStoreItem(doc.data(), doc.id, currentPath);
-            //i++;
-        })
-    }).catch((err) => {
-        console.log(err)
-    });
+
+//TODO: In the forEach, add each storeItem to an array, and only load the 16 first items on the index page. Try to implement the popularity system to this as well.
+if (documentName == 'MANN.CO Nettbutikk'){
+    for(i = 0; i <= pathArray.length; i++){
+        //console.log(i);
+        let currentPath = pathArray[i];
+        db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                console.log(storeSlots.children.length);
+                console.log(i);
+                //console.log(snapshot);
+                //console.log(snapshot.docs.length);
+                //console.log(pathArray[i]);
+                addStoreItem(doc.data(), doc.id, currentPath);
+                //i++;
+            })
+        }).catch((err) => {
+            console.log(err)
+        });
+    }
+}else{
+    for(i = 0; i <= pathArray.length; i++){
+        //console.log(i);
+        let currentPath = pathArray[i];
+        db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                console.log(storeSlots.children.length);
+                //console.log(snapshot);
+                //console.log(snapshot.docs);
+                //console.log(pathArray[i]);
+                addStoreItem(doc.data(), doc.id, currentPath);
+                //i++;
+            })
+        }).catch((err) => {
+            console.log(err)
+        });
+    }
 }
 
 
