@@ -1,15 +1,30 @@
-test();
-
 let PleaseWork;
 let budgetRegex;
+let appliedClass;
+
+test();
 
 function test() {
   let itemLookup = localStorage.getItem("viewedItem")
   let itemPath = localStorage.getItem("itemType")
   console.log(itemLookup);
   console.log(itemPath);
+  //console.log(itemPath.includes("merc-grade"));
 
-  //TODO: make the storeItems string into a variable which changes to the path for the selected item
+  //I would have used a switch statement for this, but switch statements require the variable to already be defined, which isn't the case here
+  if(itemPath.includes("merc-grade")){
+    appliedClass = "merc-grade";
+  }else if(itemPath.includes("comm-grade")){
+    appliedClass = "comm-grade";
+  }else if(itemPath.includes("assassin-grade")){
+    appliedClass = "ass-grade";
+  }else if(itemPath.includes("elite-grade")){
+    appliedClass = "elite-grade";
+  }else if(itemPath.includes("botkillers")){
+    appliedClass = "strange";
+  }
+
+
   //Figure out a way to only load the collection with the selected item
   //Maybe achieve this by adding the folder as a value to the items on the main store page??
   db.collection(`storeItems${itemPath}`).doc(itemLookup).get().then((snapshot) => {
@@ -30,7 +45,7 @@ function showProdDetails(storeItem, id){
     let itemHtml =`
     <a onclick="history.back()" class="itemPageGoBack generalButton">< Tilbake</a>
     <div class="itemPage" itemID="${id}">
-        <p class="detailsName">${storeItem.itemName}</p>
+        <p class="detailsName ${appliedClass}">${storeItem.itemName}</p>
         <div class="storePageGrid">
             <div></div>
             <div class="miniCarousel">
@@ -77,7 +92,7 @@ function showProdDetails(storeItem, id){
 //Define the input field on the storepage
 function defineField(){
   const storePageItemCartAmnt = document.querySelector('#storePageItemCartAmnt');
-  //console.log('Item defined');
+  //console.log('Item defined');javascript
   return storePageItemCartAmnt;
 }
 

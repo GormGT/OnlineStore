@@ -1,10 +1,42 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
 
-const addStoreItem = (storeItem, id, type) => {
+const addStoreItem = (storeItem, id, path) => {
+    console.log(path);
+    let qClass;
+    switch (path){
+        //cosmetics
+        case '/Cosmetics/merc-grade':
+           qClass = 'merc-grade';
+           break;
+        case '/Cosmetics/assassin-grade':
+            qClass = 'ass-grade';
+            break;
+        //warpaints
+        case '/warpaints/merc-grade':
+            qClass = 'merc-grade';
+            break;
+        case '/warpaints/comm-grade':
+            qClass = 'comm-grade';
+            break;
+        case '/warpaints/assassin-grade':
+            qClass = 'ass-grade';
+            break;
+        case '/warpaints/elite-grade':
+            qClass = 'elite-grade';
+            break;
+        //botkillers
+        case '/weaponFX/botkillers':
+            qClass = 'strange';
+            break;
+        //default color
+        default:
+            qClass = 'normal';
+            break;
+    }
     let itemHtml =`
-    <div class="storeItem" itemType="${type}" itemID="${id}">
-        <p class="itemName">${storeItem.itemName}</p>
+    <div class="storeItem ${qClass}-border" itemType="${path}" itemID="${id}">
+        <p class="${qClass} itemName">${storeItem.itemName}</p>
         <img src="${storeItem.itemImg}" height="120px" alt="Bilde av ${storeItem.itemName}">
         <p class="price">${storeItem.itemPrice}</p>
         <button class="itemBuyButton">Legg i handlekurv</button>
@@ -15,120 +47,22 @@ const addStoreItem = (storeItem, id, type) => {
 }
 
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
-//----------------------Weapons----------------------------
-db.collection('storeItems/weapons/stock').get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/weapons/stock");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-db.collection('storeItems/weapons/common').get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/weapons/common");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-//----------------------Cosmetics----------------------------
-db.collection('storeItems/Cosmetics/vanlig').get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/Cosmetics/vanlig");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-db.collection('storeItems/Cosmetics/merc-grade').get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/Cosmetics/merc-grade");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-db.collection('storeItems/Cosmetics/assassin-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/Cosmetics/assassin-grade");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-//----------------------War paints----------------------------
-db.collection('storeItems/warpaints/merc-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/warpaints/merc-grade");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-db.collection('storeItems/warpaints/comm-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/warpaints/comm-grade");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-db.collection('storeItems/warpaints/assassin-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/warpaints/assassin-grade");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-db.collection('storeItems/warpaints/elite-grade').get().then((snapshot) => { //There must be a more optimised way of doing this
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/warpaints/elite-grade");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-//----------------------Weapon effects----------------------------
-db.collection('storeItems/weaponFX/annet').get().then((snapshot) => { //There must be a more optimised way of doing this | I'm going to keep including this comment until I've optimised this
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/weaponFX/annet");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
-db.collection('storeItems/weaponFX/botkillers').get().then((snapshot) => { //There must be a more optimised way of doing this
-    snapshot.docs.forEach(doc => {
-        //console.log(snapshot);
-        //console.log(snapshot.docs);
-        addStoreItem(doc.data(), doc.id, "/weaponFX/botkillers");
-        //i++;
-    })
-}).catch((err) => {
-    console.log(err)
-});
+const pathArray = ['/weapons/stock', '/weapons/common', '/Cosmetics/vanlig', '/Cosmetics/merc-grade', '/Cosmetics/assassin-grade', '/warpaints/merc-grade', '/warpaints/comm-grade', '/warpaints/assassin-grade', '/warpaints/elite-grade', '/weaponFX/annet', '/weaponFX/botkillers'];
+for(i = 0; i <= pathArray.length; i++){
+    //console.log(i);
+    let currentPath = pathArray[i];
+    db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            //console.log(snapshot);
+            //console.log(snapshot.docs);
+            //console.log(pathArray[i]);
+            addStoreItem(doc.data(), doc.id, currentPath);
+            //i++;
+        })
+    }).catch((err) => {
+        console.log(err)
+    });
+}
 
 
 

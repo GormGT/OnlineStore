@@ -657,6 +657,7 @@ form.loginForm {
     text-align: center;
     font-family: "tf2build";
     margin: 0;
+    color: rgb(219, 219, 21);
 }
 .storePageDesc{
     padding-top: 100px;
@@ -754,4 +755,45 @@ form.loginForm {
 /* On hover, add a black background color with a little bit see-through */
 .miniCarouselPrev:hover, .miniCarouselNext:hover {
     background-color: rgba(0,0,0,0.8);
+}
+
+/*-----------------------Global styles for different item qualities-----------------------------*/
+.strange{
+    color: #CF6A32 !important;
+}
+.unusual{
+    color: #8650AC !important;
+}
+.merc-grade{
+    color: #4B69FF !important;
+}
+.comm-grade{
+    color: #8847FF !important;
+}
+.ass-grade{
+    color: #D32CE6 !important;
+}
+.elite-grade{
+    color: #EB4B4B !important;
+}
+
+/*For item borders*/
+
+.strange-border{
+    border-color: #CF6A32 !important;
+}
+.unusual-border{
+    border-color: #8650AC !important;
+}
+.merc-grade-border{
+    border-color: #4B69FF !important;
+}
+.comm-grade-border{
+    border-color: #8847FF !important;
+}
+.ass-grade-border{
+    border-color: #D32CE6 !important;
+}
+.elite-grade-border{
+    border-color: #EB4B4B !important;
 }
