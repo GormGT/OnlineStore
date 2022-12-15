@@ -617,6 +617,11 @@ form.loginForm {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+.dropdownToggle img{
+    width: 9px;
+    padding-left: 7px;
+    filter: invert(100%);
+}
 .dropdownToggle:hover{
     background-color: #222222;
     cursor: pointer;
