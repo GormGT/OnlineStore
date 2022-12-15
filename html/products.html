@@ -22,10 +22,11 @@
 
     
     <main>
-        <div class="indexStoreHeader">
-        </div>
 
         <div class="mainStore">
+            <div class="mainStoreHeader">
+                Produkter
+            </div>
             <div class="mainStoreNav">
                 <div class="dropdownContain popularCat"><!--Subcategories: Popularitet, Pris: Høyest til lavest, lavest til høyest-->
                     <button class="dropdownToggle" onclick="showDropdown(1)">Sorter etter:</button>
@@ -38,46 +39,84 @@
                 <div class="dropdownContain typeCat"><!--Subcategories: Våpen, Kosmetikk, Krigsmaling, Våpeneffekter, Verktøy, Maskiner, Tjenester, Annet-->
                     <button class="dropdownToggle" onclick="showDropdown(2)">Type:</button>
                     <div id="typeDropdown" class="dropdownContent">
-                        <input type="checkbox" id="weapBox" value="weapon">
-                        <label for="weapBox">Våpen</label><br>
-                        <input type="checkbox" id="cosmetBox" value="cosmetics">
-                        <label for="cosmetBox">Klær og kosmetikk</label><br>
-                        <input type="checkbox" id="warPBox" value="warPaint">
-                        <label for="warPBox">Krigsmaling</label><br>
-                        <input type="checkbox" id="weapEfxBox" value="weaponEfx">
-                        <label for="weapEfxBox">Våpeneffekter</label><br>
-                        <input type="checkbox" id="toolBox" value="tool">
-                        <label for="toolBox">Verktøy</label><br>
-                        <input type="checkbox" id="machBox" value="machines">
-                        <label for="machBox">Maskiner</label><br>
-                        <input type="checkbox" id="offBox" value="offers">
-                        <label for="offBox">Tjenester</label><br>
-                        <input type="checkbox" id="otherBox" value="other">
-                        <label for="otherBox">Annet</label><br>
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="weapBox" value="weapon">
+                            <label for="weapBox">Våpen</label><br>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="cosmetBox" value="cosmetics">
+                            <label for="cosmetBox">Klær og kosmetikk</label><br>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="warPBox" value="warPaint">
+                            <label for="warPBox">Krigsmaling</label><br>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="weapEfxBox" value="weaponEfx">
+                            <label for="weapEfxBox">Våpeneffekter</label><br>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="toolBox" value="tool">
+                            <label for="toolBox">Verktøy</label><br>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="machBox" value="machines">
+                            <label for="machBox">Maskiner</label><br>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="offBox" value="offers">
+                            <label for="offBox">Tjenester</label><br>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="otherBox" value="other">
+                            <label for="otherBox">Annet</label><br>
+                        </li>
+                    </ul>
                     </div> 
                 </div>
                 <div class="dropdownContain qualityCat"><!--Subcategories: Våpen: Stock, Vanlig, Strange, Uvanlig. Kosmetikk: Vanlig, Mercenary-grade, Commando-grade, Assasin-grade, Elite-grade, Uvanlig. Krigsmaling: Fabrikkny, Lite slitasje, Felttestet, Velbrukt, Krigssåret.-->
                     <button class="dropdownToggle" onclick="showDropdown(3)">Kvalitet</button>
                     <div id="qualityDropdown" class="dropdownContent dropDownLong">
                         <p class="dropdownDivide">Våpen:</p>
-                        <input type="checkbox" id="stockBox" value="stock">
-                        <label for="stockBox">Stock</label>
-                        <input type="checkbox" id="vanligkBox" value="vanlig">
-                        <label for="vanligkBox">Vanlig</label>
-                        <input type="checkbox" id="australiumBox" value="australium">
-                        <label for="australiumBox">Australium</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="stockBox" value="stock">
+                                <label for="stockBox">Stock</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="vanligkBox" value="vanlig">
+                                <label for="vanligkBox">Vanlig</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="australiumBox" value="australium">
+                                <label for="australiumBox">Australium</label>
+                            </li>
+                        </ul>
                         <p class="dropdownDivide">Klær og kosmetikk</p>
-                        <input type="checkbox" id="vanligBox" value="vanlig">
-                        <label for="vanligBox">Vanlig</label>
-                        <input type="checkbox" id="mercGradeBox" value="mercGrade">
-                        <label for="mercGradeBox">Mercenary-grade</label>
-                        <input type="checkbox" id="comGradeBox" value="comGrade">
-                        <label for="comGradeBox">Commando-grade</label>
-                        <input type="checkbox" id="assGradeBox" value="assGrade">
-                        <label for="assGradeBox">Assasin-grade</label>
-                        <input type="checkbox" id="eliteGradeBox" value="eliteGrade">
-                        <label for="eliteGradeBox">Elite-grade</label>
-                        <p class="dropdownDivide">Krigsmaling</p>
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="vanligBox" value="vanlig">
+                                <label for="vanligBox">Vanlig</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="mercGradeBox" value="mercGrade">
+                                <label for="mercGradeBox">Mercenary-grade</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="comGradeBox" value="comGrade">
+                                <label for="comGradeBox">Commando-grade</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="assGradeBox" value="assGrade">
+                                <label for="assGradeBox">Assasin-grade</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="eliteGradeBox" value="eliteGrade">
+                                <label for="eliteGradeBox">Elite-grade</label>
+                            </li>
+                        </ul>
+                        <!--<p class="dropdownDivide">Krigsmaling</p>
                         <input type="checkbox" id="facNewBox" value="facNew">
                         <label for="facNewBox">Fabrikkny</label>
                         <input type="checkbox" id="minWearBox" value="minWear">
@@ -87,98 +126,23 @@
                         <input type="checkbox" id="weWorBox" value="weWor">
                         <label for="weWorBox">Velbrukt</label>
                         <input type="checkbox" id="batScarBox" value="batScar">
-                        <label for="batScarBox">Krigssåret</label>
+                        <label for="batScarBox">Krigssåret</label>-->
                         <p class="dropdownDivide">Generelle kvaliteter</p>
-                        <input type="checkbox" id="strangeBox" value="strange">
-                        <label for="strangeBox">Strange</label>
-                        <input type="checkbox" id="unusualBox" value="unusual">
-                        <label for="unusualBox">Unusual</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="strangeBox" value="strange">
+                                <label for="strangeBox">Strange</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="unusualBox" value="unusual">
+                                <label for="unusualBox">Unusual</label>
+                            </li>
+                        </ul>
                     </div><!--Make a field which all the tags the user is currently searching for is added to, and then run a forEach to display which items are shown -->
                 </div>
               </div>
-            <div class="mainStoreArea storeArea">
-                <!--<div class="slot1 storeItem">
-                    <p class="itemName">Scattergun</p>
-                    <img src="/img/StoreScattergun.png" height="120px" alt="">
-                    <p class="price">$ 899</p>
-                </div>
-                <div class="slot2 storeItem">
-                    <p class="itemName">Missing Item</p>
-                    <img src="/img/Missing.png" height="120px" alt="">
-                    <p class="price">$ ---</p>
-                </div>
-                <div class="slot3 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot4 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot5 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot6 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot7 storeItem">
-                    <p class="itemName">Minigun</p>
-                    <img src="/img/StoreMinigun.png" height="120px" alt="">
-                    <p class="price">$ 250 599</p>
-                </div>
-                <div class="slot8 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot9 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot10 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot11 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot12 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot13 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot14 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot15 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-                <div class="slot16 storeItem">
-                    <p class="itemName">Shotgun</p>
-                    <img src="/img/StoreShotgun.png" height="120px" alt="">
-                    <p class="price">$ 499</p>
-                </div>
-            </div>-->
-            </div>
+            <div class="mainStoreArea storeArea"></div>
+        </div>
         <div class="left"></div>
         <div class="right"></div>
     </main>

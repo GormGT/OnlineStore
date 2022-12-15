@@ -1,5 +1,93 @@
 //This is a file where cut code, AKA large volumes of code which was in use earlier in development but was later made obsolete, is stored for performance reasons.
 
+
+//-------------------------File: products.html (middle)-------------------------------
+
+/*<!--<div class="slot1 storeItem">
+                    <p class="itemName">Scattergun</p>
+                    <img src="/img/StoreScattergun.png" height="120px" alt="">
+                    <p class="price">$ 899</p>
+                </div>
+                <div class="slot2 storeItem">
+                    <p class="itemName">Missing Item</p>
+                    <img src="/img/Missing.png" height="120px" alt="">
+                    <p class="price">$ ---</p>
+                </div>
+                <div class="slot3 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot4 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot5 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot6 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot7 storeItem">
+                    <p class="itemName">Minigun</p>
+                    <img src="/img/StoreMinigun.png" height="120px" alt="">
+                    <p class="price">$ 250 599</p>
+                </div>
+                <div class="slot8 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot9 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot10 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot11 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot12 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot13 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot14 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot15 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="slot16 storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="/img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+            </div>-->*/
+
+
+
+
 //-------------------------File: storeSort.js (bottom)----------------------------
 
 

@@ -149,7 +149,7 @@ if (documentName == 'MANN.CO Nettbutikk'){
         let currentPath = pathArray[i];
         db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
-                console.log(storeSlots.children.length);
+                //console.log(storeSlots.children.length);
                 addStoreItem(doc.data(), doc.id, currentPath, false, i);
                 //i++;
             })
