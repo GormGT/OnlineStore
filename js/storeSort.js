@@ -5,10 +5,8 @@ let indexCollection = [];
 let indexCollectionConvert = [];
 
 const addStoreItem = (storeItem, id, path, limitCheck, index) => {
-    //console.log(path);
     setTimeout(() =>{
     if (limitCheck == false){
-        //createHTML(storeItem, id, path);
         let qClass;
         switch (path){
             //cosmetics
@@ -48,9 +46,7 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
             <button class="itemBuyButton">Legg i handlekurv</button>
         </div>`;
         storeSlots.innerHTML += itemHtml;
-    }else if(limitCheck == true){//TODO: Instead of HTML, make the items into objects, that are then inserted into the array and sorted.
-        // This is a serious mess right now holy shit
-        //The problem: Items are being added from the indexCollection array to the indexCollectionConvert before the former has finished sorting, and therefore the latter becomes a mess. I need to somehow make the objects
+    }else if(limitCheck == true){
         let sortedItem = {
             itemDesc: storeItem.itemDesc,
             itemImg: storeItem.itemImg,
@@ -62,34 +58,20 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
         }
         //console.log('VENNLIGST FUNGER', sortedItem);
         indexCollection.push(sortedItem);
-        //console.log(path);
-        //console.log(i);
         indexCollection.sort((a, b) => b.itemPop - a.itemPop);
-        //indexCollection.reverse();
-        //console.log(indexCollection);
-        //console.log(indexCollection[index].itemID);
-        //console.log(indexCollection[0]);
     }}, 100);
     //console.log(storeItem);
 }
 
-//const why = setTimeout(console.log('UWYGAHUIDJWKOLANDIOk', indexCollection), 5000);
-
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
 const pathArray = ['/weapons/stock', '/weapons/common', '/Cosmetics/vanlig', '/Cosmetics/merc-grade', '/Cosmetics/assassin-grade', '/warpaints/merc-grade', '/warpaints/comm-grade', '/warpaints/assassin-grade', '/warpaints/elite-grade', '/weaponFX/annet', '/weaponFX/botkillers'];
 
-//TODO: In the forEach, add each storeItem to an array, and only load the 16 first items on the index page. Try to implement the popularity system to this as well.
 if (documentName == 'MANN.CO Nettbutikk'){
     for(let i = 0; i <= pathArray.length; i++){
         //console.log(i);
         let currentPath = pathArray[i];
         db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
-                //console.log(storeSlots.children.length);
-                //console.log(i);
-                //console.log(snapshot);
-                //console.log(snapshot.docs.length);
-                //console.log(pathArray[i]);
                 addStoreItem(doc.data(), doc.id, currentPath, true, i);
                 //i++;
             })
@@ -162,9 +144,6 @@ if (documentName == 'MANN.CO Nettbutikk'){
 
 
 window.addEventListener("click", e => {
-    //console.log(e.target.parentElement);
-    //let target = e.currentTarget;
-    //let parent = target.parentNode;
     if (e.target.classList.contains("storeItem")){
         //console.log("this element has an id");
         let itemID = e.target.getAttribute("itemid");

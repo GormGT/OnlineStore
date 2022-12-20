@@ -103,7 +103,7 @@ body {
     height: 100%;
 }
 header img{
-    filter: grayscale(50%) blur(6px);
+    filter: grayscale(10%) blur(6px);
 }
 
 .navbar ul {
@@ -617,11 +617,11 @@ form.loginForm {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
-.dropdownToggle img{
+/*.dropdownToggle img{
     width: 9px;
     padding-left: 7px;
     filter: invert(100%);
-}
+}*/
 .dropdownToggle:hover{
     background-color: #222222;
     cursor: pointer;
@@ -669,6 +669,13 @@ form.loginForm {
 .dropdownContent input {
     margin: 10px;
     margin-right: 0px;
+}
+.dropdownContent ul li{
+    display: list-item;
+}
+.dropdownContent ul li label{
+    padding-right: 30px;
+    padding: 10px;
 }
 .dropdownContent ul li:hover, .dropdownContent div:hover{
     background-color: #222222;

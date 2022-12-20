@@ -1,6 +1,89 @@
 //This is a file where cut code, AKA large volumes of code which was in use earlier in development but was later made obsolete, is stored for performance reasons.
 
 
+
+//-------------------------File: index.html (middle)----------------------------------
+/*<!--<div class="storeItem">
+                    <p class="itemName">Scattergun</p>
+                    <img src="img/StoreScattergun.png" height="120px" alt="">
+                    <p class="price">$ 899</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Missing Item</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p></div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Minigun</p>
+                    <img src="img/StoreMinigun.png" height="120px" alt="">
+                    <p class="price">$ 250 599</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>
+                <div class="storeItem">
+                    <p class="itemName">Shotgun</p>
+                    <img src="img/StoreShotgun.png" height="120px" alt="">
+                    <p class="price">$ 499</p>
+                </div>-->
+                <!--<p>Laster...</p>-->*/
+
 //-------------------------File: products.html (middle)-------------------------------
 
 /*<!--<div class="slot1 storeItem">
