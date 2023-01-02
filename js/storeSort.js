@@ -1,12 +1,19 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
 let documentName = document.title;
+
+//define arrays that are used for sorting on the index page
 let indexCollection = [];
 let indexCollectionConvert = [];
 
+//define arrays that are used for sorting on the products page
+let productOrderArray = [];
+let prodSortQuality = [];
+let prodSortType = [];
+
 const addStoreItem = (storeItem, id, path, limitCheck, index) => {
     setTimeout(() =>{
-    if (limitCheck == false){
+    if (limitCheck == false){ //TODO: Rewrite the following to work with a new sorting system
         let qClass;
         switch (path){
             //cosmetics
@@ -15,6 +22,9 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
             break;
             case '/Cosmetics/assassin-grade':
                 qClass = 'ass-grade';
+                break;
+            case '/Cosmetics/unusual':
+                qClass = 'unusual';
                 break;
             //warpaints
             case '/warpaints/merc-grade':
@@ -46,6 +56,25 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
             <button class="itemBuyButton">Legg i handlekurv</button>
         </div>`;
         storeSlots.innerHTML += itemHtml;
+        //Notes for new sorting system:
+        /*
+        Step by step:
+            1. Add items to array (productOrderArray), similar to on the index page. Add additional object property called "sortType"
+            2. Sort array by default value, popularity
+            3. Display items on page with HTML injection
+            4. When sorting all items, overwrite the main array with a new sort() method
+            5. When sorting/searching for specific qualities/types:
+                1. Apply a class of "hiddenProd" to everything on the page
+                2. Do the following:
+                    Item Quality:
+                        A. Use the itemType property specified by the button selected, and insert it into the prodSortQuality array. Apply "hideQ" class to everything else
+                        B. Remove the "hiddenProd" class from the items belonging to the path specified
+                    Item Type:
+                        A. Use the sortType property specified by the button selected, and insert it into the prodSortType array. Apply "hideT" class to everything else
+                        B. Remove the "hiddenProd" class from the items belonging to the path specified
+                    IMPORTANT: An item will only be shown if there is no "hideQ" or "hideT" class present.
+        
+        */
     }else if(limitCheck == true){
         let sortedItem = {
             itemDesc: storeItem.itemDesc,
@@ -56,7 +85,7 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
             itemID: id,
             itemPath: path,
         }
-        //console.log('VENNLIGST FUNGER', sortedItem);
+        console.log('VENNLIGST FUNGER', sortedItem);
         indexCollection.push(sortedItem);
         indexCollection.sort((a, b) => b.itemPop - a.itemPop);
     }}, 100);
@@ -64,7 +93,7 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
 }
 
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
-const pathArray = ['/weapons/stock', '/weapons/common', '/Cosmetics/vanlig', '/Cosmetics/merc-grade', '/Cosmetics/assassin-grade', '/warpaints/merc-grade', '/warpaints/comm-grade', '/warpaints/assassin-grade', '/warpaints/elite-grade', '/weaponFX/annet', '/weaponFX/botkillers'];
+const pathArray = ['/weapons/stock', '/weapons/common', '/Cosmetics/vanlig', '/Cosmetics/merc-grade', '/Cosmetics/assassin-grade', '/Cosmetics/unusual', '/warpaints/merc-grade', '/warpaints/comm-grade', '/warpaints/assassin-grade', '/warpaints/elite-grade', '/weaponFX/annet', '/weaponFX/botkillers'];
 
 if (documentName == 'MANN.CO Nettbutikk'){
     for(let i = 0; i <= pathArray.length; i++){

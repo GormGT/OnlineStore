@@ -20,6 +20,8 @@ function test() {
     appliedClass = "ass-grade";
   }else if(itemPath.includes("elite-grade")){
     appliedClass = "elite-grade";
+  }else if(itemPath.includes("unusual")){
+    appliedClass = "unusual";
   }else if(itemPath.includes("botkillers")){
     appliedClass = "strange";
   }
