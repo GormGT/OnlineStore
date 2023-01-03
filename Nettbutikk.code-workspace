@@ -4,10 +4,7 @@
 			"path": "."
 		},
 		{
-			"path": "../../../Programmering/VG2/Dategenerator"
-		},
-		{
-			"path": "../../../Programmering/VG2/NetNinjaFiles/RandomTasks"
+			"path": "../Nod"
 		}
 	],
 	"settings": {
