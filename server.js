@@ -7,7 +7,7 @@ const port = 2007;
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/index.html', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile("index.html", {root: __dirname})
 })
 
