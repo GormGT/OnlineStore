@@ -24,6 +24,8 @@ function test() {
     appliedClass = "unusual";
   }else if(itemPath.includes("botkillers")){
     appliedClass = "strange";
+  }else if(itemPath.includes("australium")){
+    appliedClass = "strange";
   }
 
 

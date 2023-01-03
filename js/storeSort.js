@@ -41,6 +41,7 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
                 break;
             //botkillers
             case '/weaponFX/botkillers':
+            case '/weapons/australium':
                 qClass = 'strange';
                 break;
             //default color
@@ -93,7 +94,7 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
 }
 
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
-const pathArray = ['/weapons/stock', '/weapons/common', '/Cosmetics/vanlig', '/Cosmetics/merc-grade', '/Cosmetics/assassin-grade', '/Cosmetics/unusual', '/warpaints/merc-grade', '/warpaints/comm-grade', '/warpaints/assassin-grade', '/warpaints/elite-grade', '/weaponFX/annet', '/weaponFX/botkillers'];
+const pathArray = ['/weapons/stock', '/weapons/common', '/weapons/australium', '/Cosmetics/vanlig', '/Cosmetics/merc-grade', '/Cosmetics/assassin-grade', '/Cosmetics/unusual', '/warpaints/merc-grade', '/warpaints/comm-grade', '/warpaints/assassin-grade', '/warpaints/elite-grade', '/weaponFX/annet', '/weaponFX/botkillers', '/other/minerals'];
 
 if (documentName == 'MANN.CO Nettbutikk'){
     for(let i = 0; i <= pathArray.length; i++){
@@ -122,6 +123,9 @@ if (documentName == 'MANN.CO Nettbutikk'){
                 case '/Cosmetics/assassin-grade':
                     qClass = 'ass-grade';
                     break;
+                case '/Cosmetics/unusual':
+                    qClass = 'unusual';
+                    break;
                 //warpaints
                 case '/warpaints/merc-grade':
                     qClass = 'merc-grade';
@@ -137,6 +141,7 @@ if (documentName == 'MANN.CO Nettbutikk'){
                     break;
                 //botkillers
                 case '/weaponFX/botkillers':
+                case '/weapons/australium':
                     qClass = 'strange';
                     break;
                 //default color
