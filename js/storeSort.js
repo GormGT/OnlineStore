@@ -1,6 +1,7 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
 let documentName = document.title;
+let selectedSort = 'alphabetical';
 
 //define arrays that are used for sorting on the index page
 let indexCollection = [];
@@ -13,8 +14,50 @@ let prodSortType = [];
 
 const addStoreItem = (storeItem, id, path, limitCheck, index) => {
     setTimeout(() =>{
-    if (limitCheck == false){ //TODO: Rewrite the following to work with a new sorting system
-        let qClass;
+    //Nothing to see here, just me ruining my own code
+    if (limitCheck == false){ //DOING: Rewrite the following to work with a new sorting system
+        let pathConversion;
+        switch (path){
+            case '/weapons/stock':
+            case '/weapons/common':
+            case '/weapons/australium':
+                pathConversion = 'weapons';
+                break;
+            case '/Cosmetics/vanlig':
+            case '/Cosmetics/unusual':
+            case '/Cosmetics/merc-grade':
+            case '/Cosmetics/merc-assassin-grade':
+                pathConversion = 'cosmetics';
+                break;
+            case '/warpaints/merc-grade':
+            case '/warpaints/comm-grade':
+            case '/warpaints/assassin-grade':
+            case '/warpaints/elite-grade':
+                pathConversion = 'warpaints';
+                break;
+            case '/weaponFX/annet':
+            case '/weaponFX/botkillers':
+                pathConversion = 'weaponFX';
+                break;
+            case '/other/minerals':
+                pathConversion = 'other';
+                break;
+        }
+        let sortedItem = {
+            itemDesc: storeItem.itemDesc,
+            itemImg: storeItem.itemImg,
+            itemName: storeItem.itemName,
+            itemPop: storeItem.itemPop,
+            itemPrice: storeItem.itemPrice,
+            itemID: id,
+            itemPath: path,
+            sortType: pathConversion
+        }
+        console.log('VENNLIGST FUNGER', sortedItem);
+        productOrderArray.push(sortedItem);
+        //productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
+        console.log(productOrderArray);
+        /*let qClass;
         switch (path){
             //cosmetics
             case '/Cosmetics/merc-grade':
@@ -56,12 +99,12 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
             <p class="price">${storeItem.itemPrice}</p>
             <button class="itemBuyButton">Legg i handlekurv</button>
         </div>`;
-        storeSlots.innerHTML += itemHtml;
+        storeSlots.innerHTML += itemHtml;*/
         //Notes for new sorting system:
         /*
         Step by step:
-            1. Add items to array (productOrderArray), similar to on the index page. Add additional object property called "sortType"
-            2. Sort array by default value, popularity
+            DONE 1. Add items to array (productOrderArray), similar to on the index page. Add additional object property called "sortType"
+            DONE 2. Sort array by default value, popularity
             3. Display items on page with HTML injection
             4. When sorting all items, overwrite the main array with a new sort() method
             5. When sorting/searching for specific qualities/types:
@@ -173,8 +216,67 @@ if (documentName == 'MANN.CO Nettbutikk'){
             console.log(err)
         });
     }
+    setTimeout(() => {
+        prodSort();
+        //productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
+        for(i = 0; i <= productOrderArray.length; i++){
+            let qClass;
+            switch (productOrderArray[i].itemPath){ //Why is this line returning errors
+                //cosmetics
+                case '/Cosmetics/merc-grade':
+                qClass = 'merc-grade';
+                break;
+                case '/Cosmetics/assassin-grade':
+                    qClass = 'ass-grade';
+                    break;
+                case '/Cosmetics/unusual':
+                    qClass = 'unusual';
+                    break;
+                //warpaints
+                case '/warpaints/merc-grade':
+                    qClass = 'merc-grade';
+                    break;
+                case '/warpaints/comm-grade':
+                    qClass = 'comm-grade';
+                    break;
+                case '/warpaints/assassin-grade':
+                    qClass = 'ass-grade';
+                    break;
+                case '/warpaints/elite-grade':
+                    qClass = 'elite-grade';
+                    break;
+                //botkillers
+                case '/weaponFX/botkillers':
+                case '/weapons/australium':
+                    qClass = 'strange';
+                    break;
+                //default color
+                default:
+                    qClass = 'normal';
+                    break;
+            }
+            let itemHtml =`
+            <div class="storeItem ${qClass}-border" itemType="${productOrderArray[i].itemPath}" itemID="${productOrderArray[i].itemID}" itemPop="${productOrderArray[i].itemPop}">
+                <p class="${qClass} ${productOrderArray[i].sortType} itemName">${productOrderArray[i].itemName}</p>
+                <img src="${productOrderArray[i].itemImg}" height="120px" alt="Bilde av ${productOrderArray[i].itemName}">
+                <p class="price">${productOrderArray[i].itemPrice}</p>
+                <button class="itemBuyButton">Legg i handlekurv</button>
+            </div>`;
+            storeSlots.innerHTML += itemHtml;
+        }
+    }, 500)
 }
 
+let prodSort = () => {
+    switch(selectedSort){
+        case 'popularity':
+            productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
+            break;
+        case 'alphabetical':
+            productOrderArray.sort();
+            break;
+    }
+}
 
 
 window.addEventListener("click", e => {
