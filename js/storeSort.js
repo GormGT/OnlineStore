@@ -1,7 +1,7 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
 let documentName = document.title;
-let selectedSort = 'alphabetical';
+let selectedSort;// = 'popularity';
 
 //define arrays that are used for sorting on the index page
 let indexCollection = [];
@@ -53,7 +53,7 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
             itemPath: path,
             sortType: pathConversion
         }
-        console.log('VENNLIGST FUNGER', sortedItem);
+        //console.log('VENNLIGST FUNGER', sortedItem);
         productOrderArray.push(sortedItem);
         //productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
         console.log(productOrderArray);
@@ -139,144 +139,160 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
 //To fetch items within subcollections, use storeItems/testDocument/testCollection1
 const pathArray = ['/weapons/stock', '/weapons/common', '/weapons/australium', '/Cosmetics/vanlig', '/Cosmetics/merc-grade', '/Cosmetics/assassin-grade', '/Cosmetics/unusual', '/warpaints/merc-grade', '/warpaints/comm-grade', '/warpaints/assassin-grade', '/warpaints/elite-grade', '/weaponFX/annet', '/weaponFX/botkillers', '/other/minerals'];
 
-if (documentName == 'MANN.CO Nettbutikk'){
-    for(let i = 0; i <= pathArray.length; i++){
-        //console.log(i);
-        let currentPath = pathArray[i];
-        db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                addStoreItem(doc.data(), doc.id, currentPath, true, i);
-                //i++;
-            })
-        }).catch((err) => {
-            console.log(err)
-        });
-    }
-    //On the index page, limit to 16 items
-    const loadItems = setTimeout(() => {
+function mainFunc(selectedSort){
+    productOrderArray = [];
+    storeSlots.innerHTML = "";
+    if (documentName == 'MANN.CO Nettbutikk'){
+        for(let i = 0; i <= pathArray.length; i++){
+            //console.log(i);
+            let currentPath = pathArray[i];
+            db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    addStoreItem(doc.data(), doc.id, currentPath, true, i);
+                    //i++;
+                })
+            }).catch((err) => {
+                console.log(err)
+            });
+        }
+        //On the index page, limit to 16 items
+        const loadItems = setTimeout(() => {
 
-        for(i = 0; i <= 15; i++){ // THIS is what's being the problem. It's trying to inject the objects in the array into the HTML, before they're even defined
-            //console.log(indexCollection[i]);
-            let qClass;
-            switch (indexCollection[i].itemPath){ //If it is directly injected into the HTML, everything breaks
-                //cosmetics
-                case '/Cosmetics/merc-grade':
-                qClass = 'merc-grade';
-                break;
-                case '/Cosmetics/assassin-grade':
-                    qClass = 'ass-grade';
-                    break;
-                case '/Cosmetics/unusual':
-                    qClass = 'unusual';
-                    break;
-                //warpaints
-                case '/warpaints/merc-grade':
+            for(i = 0; i <= 15; i++){ // THIS is what's being the problem. It's trying to inject the objects in the array into the HTML, before they're even defined
+                //console.log(indexCollection[i]);
+                let qClass;
+                switch (indexCollection[i].itemPath){ //If it is directly injected into the HTML, everything breaks
+                    //cosmetics
+                    case '/Cosmetics/merc-grade':
                     qClass = 'merc-grade';
                     break;
-                case '/warpaints/comm-grade':
-                    qClass = 'comm-grade';
-                    break;
-                case '/warpaints/assassin-grade':
-                    qClass = 'ass-grade';
-                    break;
-                case '/warpaints/elite-grade':
-                    qClass = 'elite-grade';
-                    break;
-                //botkillers
-                case '/weaponFX/botkillers':
-                case '/weapons/australium':
-                    qClass = 'strange';
-                    break;
-                //default color
-                default:
-                    qClass = 'normal';
-                    break;
+                    case '/Cosmetics/assassin-grade':
+                        qClass = 'ass-grade';
+                        break;
+                    case '/Cosmetics/unusual':
+                        qClass = 'unusual';
+                        break;
+                    //warpaints
+                    case '/warpaints/merc-grade':
+                        qClass = 'merc-grade';
+                        break;
+                    case '/warpaints/comm-grade':
+                        qClass = 'comm-grade';
+                        break;
+                    case '/warpaints/assassin-grade':
+                        qClass = 'ass-grade';
+                        break;
+                    case '/warpaints/elite-grade':
+                        qClass = 'elite-grade';
+                        break;
+                    //botkillers
+                    case '/weaponFX/botkillers':
+                    case '/weapons/australium':
+                        qClass = 'strange';
+                        break;
+                    //default color
+                    default:
+                        qClass = 'normal';
+                        break;
+                }
+                let itemHtml =`
+                <div class="storeItem ${qClass}-border" itemType="${indexCollection[i].itemPath}" itemID="${indexCollection[i].itemID}" itemPop="${indexCollection[i].itemPop}">
+                    <p class="${qClass} itemName">${indexCollection[i].itemName}</p>
+                    <img src="${indexCollection[i].itemImg}" height="120px" alt="Bilde av ${indexCollection[i].itemName}">
+                    <p class="price">${indexCollection[i].itemPrice}</p>
+                    <button class="itemBuyButton">Legg i handlekurv</button>
+                </div>`;
+                indexCollectionConvert.push(itemHtml);
+                storeSlots.innerHTML += indexCollectionConvert[i];
             }
-            let itemHtml =`
-            <div class="storeItem ${qClass}-border" itemType="${indexCollection[i].itemPath}" itemID="${indexCollection[i].itemID}" itemPop="${indexCollection[i].itemPop}">
-                <p class="${qClass} itemName">${indexCollection[i].itemName}</p>
-                <img src="${indexCollection[i].itemImg}" height="120px" alt="Bilde av ${indexCollection[i].itemName}">
-                <p class="price">${indexCollection[i].itemPrice}</p>
-                <button class="itemBuyButton">Legg i handlekurv</button>
-            </div>`;
-            indexCollectionConvert.push(itemHtml);
-            storeSlots.innerHTML += indexCollectionConvert[i];
+        }, 600);
+    }else{
+        for(i = 0; i <= pathArray.length; i++){
+            let currentPath = pathArray[i];
+            db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    //console.log(storeSlots.children.length);
+                    addStoreItem(doc.data(), doc.id, currentPath, false, i);
+                    //i++;
+                })
+            }).catch((err) => {
+                console.log(err)
+            });
         }
-    }, 600);
-}else{
-    for(i = 0; i <= pathArray.length; i++){
-        let currentPath = pathArray[i];
-        db.collection(`storeItems${pathArray[i]}`).get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                //console.log(storeSlots.children.length);
-                addStoreItem(doc.data(), doc.id, currentPath, false, i);
-                //i++;
-            })
-        }).catch((err) => {
-            console.log(err)
-        });
-    }
-    setTimeout(() => {
-        prodSort();
-        //productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
-        for(i = 0; i <= productOrderArray.length; i++){
-            let qClass;
-            switch (productOrderArray[i].itemPath){ //Why is this line returning errors
-                //cosmetics
-                case '/Cosmetics/merc-grade':
-                qClass = 'merc-grade';
-                break;
-                case '/Cosmetics/assassin-grade':
-                    qClass = 'ass-grade';
-                    break;
-                case '/Cosmetics/unusual':
-                    qClass = 'unusual';
-                    break;
-                //warpaints
-                case '/warpaints/merc-grade':
+        setTimeout(() => {
+            prodSort(selectedSort);
+            //productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
+            for(i = 0; i <= productOrderArray.length; i++){
+                let qClass;
+                switch (productOrderArray[i].itemPath){ //Why is this line returning errors
+                    //cosmetics
+                    case '/Cosmetics/merc-grade':
                     qClass = 'merc-grade';
                     break;
-                case '/warpaints/comm-grade':
-                    qClass = 'comm-grade';
-                    break;
-                case '/warpaints/assassin-grade':
-                    qClass = 'ass-grade';
-                    break;
-                case '/warpaints/elite-grade':
-                    qClass = 'elite-grade';
-                    break;
-                //botkillers
-                case '/weaponFX/botkillers':
-                case '/weapons/australium':
-                    qClass = 'strange';
-                    break;
-                //default color
-                default:
-                    qClass = 'normal';
-                    break;
+                    case '/Cosmetics/assassin-grade':
+                        qClass = 'ass-grade';
+                        break;
+                    case '/Cosmetics/unusual':
+                        qClass = 'unusual';
+                        break;
+                    //warpaints
+                    case '/warpaints/merc-grade':
+                        qClass = 'merc-grade';
+                        break;
+                    case '/warpaints/comm-grade':
+                        qClass = 'comm-grade';
+                        break;
+                    case '/warpaints/assassin-grade':
+                        qClass = 'ass-grade';
+                        break;
+                    case '/warpaints/elite-grade':
+                        qClass = 'elite-grade';
+                        break;
+                    //botkillers
+                    case '/weaponFX/botkillers':
+                    case '/weapons/australium':
+                        qClass = 'strange';
+                        break;
+                    //default color
+                    default:
+                        qClass = 'normal';
+                        break;
+                }
+                let itemHtml =`
+                <div class="storeItem ${qClass}-border" itemType="${productOrderArray[i].itemPath}" itemID="${productOrderArray[i].itemID}" itemPop="${productOrderArray[i].itemPop}">
+                    <p class="${qClass} ${productOrderArray[i].sortType} itemName">${productOrderArray[i].itemName}</p>
+                    <img src="${productOrderArray[i].itemImg}" height="120px" alt="Bilde av ${productOrderArray[i].itemName}">
+                    <p class="price">${productOrderArray[i].itemPrice}</p>
+                    <button class="itemBuyButton">Legg i handlekurv</button>
+                </div>`;
+                storeSlots.innerHTML += itemHtml;
             }
-            let itemHtml =`
-            <div class="storeItem ${qClass}-border" itemType="${productOrderArray[i].itemPath}" itemID="${productOrderArray[i].itemID}" itemPop="${productOrderArray[i].itemPop}">
-                <p class="${qClass} ${productOrderArray[i].sortType} itemName">${productOrderArray[i].itemName}</p>
-                <img src="${productOrderArray[i].itemImg}" height="120px" alt="Bilde av ${productOrderArray[i].itemName}">
-                <p class="price">${productOrderArray[i].itemPrice}</p>
-                <button class="itemBuyButton">Legg i handlekurv</button>
-            </div>`;
-            storeSlots.innerHTML += itemHtml;
-        }
-    }, 500)
-}
+        }, 500);
+}};
 
-let prodSort = () => {
+let prodSort = (selectedSort) => {
     switch(selectedSort){
         case 'popularity':
             productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
             break;
         case 'alphabetical':
-            productOrderArray.sort();
+            productOrderArray.sort(function (a, b) {
+                if (a.itemName < b.itemName) {
+                    return -1;
+                }
+                if (a.itemName > b.itemName) {
+                    return 1;
+                }
+                return 0;
+                });
             break;
     }
 }
+
+let buttonSortCall = (selectedSort) => {
+    prodSort(selectedSort);
+
+};
 
 
 window.addEventListener("click", e => {
@@ -309,3 +325,5 @@ window.addEventListener("click", e => {
         window.location.assign("../html/itemPage.html");
     }
 });
+
+mainFunc();
