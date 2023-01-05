@@ -64,7 +64,7 @@ function showProdDetails(storeItem, id){
             </div>
             <div class="storePageDesc">
               <p class="detailsDescription">${storeItem.itemDesc}</p>
-              <p class="detailsPrice">${storeItem.itemPrice}</p>
+              <p class="detailsPrice">$${storeItem.itemPrice}</p>
             </div>
             <div>
               <div class="storePageAddCartAmnt">

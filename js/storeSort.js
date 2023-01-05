@@ -1,5 +1,6 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
+let sortButton = document.querySelector("#sortButton");
 let documentName = document.title;
 let selectedSort;// = 'popularity';
 
@@ -56,7 +57,7 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
         //console.log('VENNLIGST FUNGER', sortedItem);
         productOrderArray.push(sortedItem);
         //productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
-        console.log(productOrderArray);
+        //console.log(productOrderArray);
         /*let qClass;
         switch (path){
             //cosmetics
@@ -129,7 +130,7 @@ const addStoreItem = (storeItem, id, path, limitCheck, index) => {
             itemID: id,
             itemPath: path,
         }
-        console.log('VENNLIGST FUNGER', sortedItem);
+        //console.log('VENNLIGST FUNGER', sortedItem);
         indexCollection.push(sortedItem);
         indexCollection.sort((a, b) => b.itemPop - a.itemPop);
     }}, 100);
@@ -199,13 +200,13 @@ function mainFunc(selectedSort){
                 <div class="storeItem ${qClass}-border" itemType="${indexCollection[i].itemPath}" itemID="${indexCollection[i].itemID}" itemPop="${indexCollection[i].itemPop}">
                     <p class="${qClass} itemName">${indexCollection[i].itemName}</p>
                     <img src="${indexCollection[i].itemImg}" height="120px" alt="Bilde av ${indexCollection[i].itemName}">
-                    <p class="price">${indexCollection[i].itemPrice}</p>
+                    <p class="price">$${indexCollection[i].itemPrice}</p>
                     <button class="itemBuyButton">Legg i handlekurv</button>
                 </div>`;
                 indexCollectionConvert.push(itemHtml);
                 storeSlots.innerHTML += indexCollectionConvert[i];
             }
-        }, 600);
+        }, 700);
     }else{
         for(i = 0; i <= pathArray.length; i++){
             let currentPath = pathArray[i];
@@ -262,7 +263,7 @@ function mainFunc(selectedSort){
                 <div class="storeItem ${qClass}-border" itemType="${productOrderArray[i].itemPath}" itemID="${productOrderArray[i].itemID}" itemPop="${productOrderArray[i].itemPop}">
                     <p class="${qClass} ${productOrderArray[i].sortType} itemName">${productOrderArray[i].itemName}</p>
                     <img src="${productOrderArray[i].itemImg}" height="120px" alt="Bilde av ${productOrderArray[i].itemName}">
-                    <p class="price">${productOrderArray[i].itemPrice}</p>
+                    <p class="price">$${productOrderArray[i].itemPrice}</p>
                     <button class="itemBuyButton">Legg i handlekurv</button>
                 </div>`;
                 storeSlots.innerHTML += itemHtml;
@@ -274,6 +275,7 @@ let prodSort = (selectedSort) => {
     switch(selectedSort){
         case 'popularity':
             productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
+            sortButton.innerText = 'Popularitet ▼';
             break;
         case 'alphabetical':
             productOrderArray.sort(function (a, b) {
@@ -285,6 +287,15 @@ let prodSort = (selectedSort) => {
                 }
                 return 0;
                 });
+            sortButton.innerText = 'Alfabetisk ▼';
+            break;
+        case 'p-high2low':
+            sortButton.innerText = 'Pris: Høy til lavt ▼';
+            productOrderArray.sort((a, b) => b.itemPrice - a.itemPrice);
+            break;
+        case 'p-low2high':
+            sortButton.innerText = 'Pris: Lav til høy ▼'
+            productOrderArray.sort((a, b) => a.itemPrice - b.itemPrice);
             break;
     }
 }

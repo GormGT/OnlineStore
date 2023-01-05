@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/2803e0bd27.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="shortcut icon" href="../img/logo.png">
     <title>Produkter</title>
 </head>
 <body>
@@ -29,12 +30,12 @@
             </div>
             <div class="mainStoreNav">
                 <div class="dropdownContain popularCat"><!--Subcategories: Popularitet, Pris: Høyest til lavest, lavest til høyest-->
-                    <button class="dropdownToggle" onclick="showDropdown(1)">Popularitet ▼</button><!--Make the image be a part of the link and clickable-->
+                    <button class="dropdownToggle" id="sortButton" onclick="showDropdown(1)">Popularitet ▼</button><!--Make the image be a part of the link and clickable-->
                     <div id="sortDropdown" class="dropdownContent">
                         <button onclick="mainFunc('popularity')">Popularitet</button>>
                         <button onclick="mainFunc('alphabetical')">Alfabetisk</button>>
-                        <button>Pris: Høyest til lavest</button>>
-                        <button>Pris: Lavest til høyest</button>>
+                        <button onclick="mainFunc('p-high2low')">Pris: Høyest til lavest</button>>
+                        <button onclick="mainFunc('p-low2high')">Pris: Lavest til høyest</button>>
                     </div>
                 </div>
                 <div class="dropdownContain typeCat"><!--Subcategories: Våpen, Kosmetikk, Krigsmaling, Våpeneffekter, Verktøy, Maskiner, Tjenester, Annet-->
