@@ -177,6 +177,87 @@ main {
     margin-bottom: 0px;
     border-radius: 10px;
 }
+
+.cartDisplayContainer {
+    top: 0;
+    left: 0;
+    z-index: 3;
+    position: fixed;
+    width: 100vw;
+    height: 100vh; 
+    display: grid;
+    grid-template-columns: 0.4fr 2.2fr 0.4fr;
+    grid-template-rows: 0.4fr 2.2fr 0.4fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . ."
+      ". cartDisplay ."
+      ". . .";
+    background-color: rgb(0, 0, 0, 32%);
+  }
+  
+.cartDisplay{
+    grid-area: cartDisplay;
+    background-color:rgb(88, 88, 88);
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+.cartDisplay h1{
+    text-align: center;
+    font-family: "tf2build";
+    letter-spacing: 2px;
+}
+.cartItemView {  
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+  }
+
+.cartItem {  
+    display: grid;
+    grid-template-columns: 0.5fr 1.0fr 0.5fr;
+    grid-template-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". . .";
+}
+.cartItemImg{
+    text-align: center;
+}
+.cartInfoText{
+    font-family: "tf2build";
+    letter-spacing: 2px;
+}
+
+.cartInfoAmntRemv {  
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "."
+      ".";
+    font-family: "tf2secondary";
+    font-size: 20px;
+}
+  
+
+.cartClose{
+    width: 50px;
+    font-size: 20px;
+}
 /*--------------Styles for the index image carousel-------------------*/
 .headCarouselContainer {
     max-width: 100%;
@@ -820,6 +901,9 @@ form.loginForm {
 }
 
 /*-----------------------Global styles for different item qualities-----------------------------*/
+.normal{
+    color: rgb(219, 219, 21);
+}
 .strange{
     color: #CF6A32 !important;
 }
@@ -858,4 +942,9 @@ form.loginForm {
 }
 .elite-grade-border{
     border-color: #EB4B4B !important;
+}
+
+/*---------------------------------------------Smaller styles for limited usage--------------------------------------*/
+.hidden{
+    display: none;
 }

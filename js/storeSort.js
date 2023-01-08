@@ -13,6 +13,9 @@ let productOrderArray = [];
 let prodSortQuality = [];
 let prodSortType = [];
 
+//array containg items in the cart
+let cartArray = [];
+
 const addStoreItem = (storeItem, id, path, limitCheck, index) => {
     setTimeout(() =>{
     //Nothing to see here, just me ruining my own code
@@ -268,7 +271,7 @@ function mainFunc(selectedSort){
                 </div>`;
                 storeSlots.innerHTML += itemHtml;
             }
-        }, 500);
+        }, 600);
 }};
 
 let prodSort = (selectedSort) => {
@@ -305,7 +308,7 @@ let buttonSortCall = (selectedSort) => {
 
 };
 
-
+//open the product page on click, or add item to cart. The code below could benefit from some changes for readability's sake, but I'm too short on time for that to be an option. Enjoy the spaghetti :)
 window.addEventListener("click", e => {
     if (e.target.classList.contains("storeItem")){
         //console.log("this element has an id");
@@ -316,9 +319,22 @@ window.addEventListener("click", e => {
         localStorage.setItem("viewedItem", itemID);
         localStorage.setItem("itemType", itemType);
         window.location.assign("../html/itemPage.html");
-    }else if(e.target.classList.contains("itemBuyButton")){
+    }else if(e.target.classList.contains("itemBuyButton")){ //Add to cart instead of opening itempage
         let shopButton = e.target;
-        //console.log("Stop clicking me");
+        let fullItem = shopButton.parentElement;
+
+        //Get item ID and path for lookup, then add to array
+        let cartItemID = fullItem.getAttribute("itemid");
+        let cartItemPath = fullItem.getAttribute("itemtype");
+        let cartItem = {
+            itemID: cartItemID,
+            itemPath: cartItemPath
+        };
+
+        cartArray.push(cartItem);
+        console.log(cartArray);
+        localStorage.setItem('cartItems', JSON.stringify(cartArray));
+
         shopButton.innerText = "I handlekurv";
         shopButton.setAttribute("disabled", true);
         shopButton.style.backgroundColor = "rgb(50, 50, 50)";
