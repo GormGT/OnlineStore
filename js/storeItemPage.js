@@ -51,7 +51,7 @@ let storePageItemCartAmnt;
 function showProdDetails(storeItem, id){
     let itemHtml =`
     <a onclick="history.back()" class="itemPageGoBack generalButton">< Tilbake</a>
-    <div class="itemPage" itemID="${id}">
+    <div class="itemPage mainArea" id="${id}">
         <p class="detailsName ${appliedClass}">${storeItem.itemName}</p>
         <div class="storePageGrid">
             <div></div>
@@ -118,7 +118,8 @@ setTimeout(() => {
     console.log(fullItem);
 
     //Get item ID and path for lookup, then add to array
-    let cartItemID = fullItem.getAttribute("itemid");
+    let cartItemID = fullItem.getAttribute("id");
+    console.log(cartItemID);
     let cartItemPath = localStorage.getItem("itemType");
     let cartItem = {
         itemID: cartItemID,
@@ -148,6 +149,37 @@ setTimeout(() => {
     shopButton.disabled = true;
   })
 }, 500)
+
+setTimeout(() => {
+  let cartCheck = JSON.parse(localStorage.getItem('cartItems'));
+  let cartCheckID;
+  let item = document.querySelector(".mainArea");
+  let button = document.querySelector(".storePageAddCart");
+
+  console.log(item);
+
+  if(cartCheck.length !== 0){
+
+      let i = 0;
+            cartCheck.forEach(() => {
+                cartCheckID = cartCheck[i].itemID;
+                console.log(cartCheckID);
+            
+                if(cartCheckID == item.getAttribute("id")){
+                  console.log("id match");
+
+                  button.innerText = "I handlekurv";
+                  button.setAttribute("disabled", true);
+                  button.style.backgroundColor = "rgb(50, 50, 50)";
+                  button.disabled = true;
+                }
+
+                i++
+            });
+
+  }
+
+}, 510)
 
 let increaseAmount = (n) => {
   if (n == '+'){

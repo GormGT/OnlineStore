@@ -200,7 +200,7 @@ function mainFunc(selectedSort){
                         break;
                 }
                 let itemHtml =`
-                <div class="storeItem ${qClass}-border" itemType="${indexCollection[i].itemPath}" itemID="${indexCollection[i].itemID}" itemPop="${indexCollection[i].itemPop}">
+                <div class="storeItem id${indexCollection[i].itemID} ${qClass}-border" itemType="${indexCollection[i].itemPath}" itemID="${indexCollection[i].itemID}" itemPop="${indexCollection[i].itemPop}">
                     <p class="${qClass} itemName">${indexCollection[i].itemName}</p>
                     <img src="${indexCollection[i].itemImg}" height="120px" alt="Bilde av ${indexCollection[i].itemName}">
                     <p class="price">$${indexCollection[i].itemPrice}</p>
@@ -263,7 +263,7 @@ function mainFunc(selectedSort){
                         break;
                 }
                 let itemHtml =`
-                <div class="storeItem ${qClass}-border" itemType="${productOrderArray[i].itemPath}" itemID="${productOrderArray[i].itemID}" itemPop="${productOrderArray[i].itemPop}">
+                <div class="storeItem id${productOrderArray[i].itemID} ${qClass}-border" itemType="${productOrderArray[i].itemPath}" itemID="${productOrderArray[i].itemID}" itemPop="${productOrderArray[i].itemPop}">
                     <p class="${qClass} ${productOrderArray[i].sortType} itemName">${productOrderArray[i].itemName}</p>
                     <img src="${productOrderArray[i].itemImg}" height="120px" alt="Bilde av ${productOrderArray[i].itemName}">
                     <p class="price">$${productOrderArray[i].itemPrice}</p>
@@ -364,6 +364,52 @@ window.addEventListener("click", e => {
         window.location.assign("../html/itemPage.html");
     }
 });
+
+//Check if items are in the cart, and make them unclickable if so
+setTimeout(() => {
+    let cartCheck = JSON.parse(localStorage.getItem('cartItems'));
+    let storeSlotCheck = [];
+    let cartCheckID;
+        if(cartCheck.length !== 0){
+            // console.log("There are items in the cart");
+            // console.log(cartCheck);
+            
+            for(e = 0; e < storeSlots.children.length; e++){
+                //console.log(storeSlots.children[e].attributes.itemid.value);
+                storeSlotCheck.push(storeSlots.children[e].attributes.itemid.value);
+            }
+
+            let i = 0;
+            cartCheck.forEach(() => {
+                cartCheckID = cartCheck[i].itemID;
+                //console.log(cartCheckID);
+
+                let x = 0;
+                storeSlotCheck.forEach(() => {
+                    if(cartCheckID == storeSlotCheck[x]){
+                        console.log("An item is in the cart", cartCheckID);
+                        let addedItem = document.querySelector(".id" + cartCheckID + "");
+                        let addedItemButton = document.querySelector(".id" + cartCheckID + " button")
+                        // console.log(addedItem);
+                        // console.log(addedItemButton);
+                        addedItem.classList.add("addedCartItem");
+
+                        addedItemButton.innerText = "I handlekurv";
+                        addedItemButton.setAttribute("disabled", true);
+                        addedItemButton.style.backgroundColor = "rgb(50, 50, 50)";
+                        addedItemButton.disabled = true;
+                    };
+                    x++;
+                })
+
+                i++
+            })
+            // console.log(cartCheckID);
+            // console.log(storeSlotCheck);
+        }
+    // let addedCartItems = document.querySelectorAll(".addedCartItem");
+    // console.log(addedCartItems);
+}, 800);
 
 //Run the main function and get things going
 mainFunc();
