@@ -228,7 +228,7 @@ function mainFunc(selectedSort){
             //productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
             for(i = 0; i < productOrderArray.length; i++){
                 let qClass;
-                switch (productOrderArray[i].itemPath){ //This line has the same problem as line 168
+                switch (productOrderArray[i].itemPath){ //This line has the same problem as line 168 | Fixed for now, but sometimes it still refuses to load
                     //cosmetics
                     case '/Cosmetics/merc-grade':
                     qClass = 'merc-grade';
@@ -328,9 +328,9 @@ window.addEventListener("click", e => {
         let cartItemPath = fullItem.getAttribute("itemtype");
         let cartItem = {
             itemID: cartItemID,
-            itemPath: cartItemPath
+            itemPath: cartItemPath,
+            itemAmnt: 1
         };
-        //Figure out why the localstorage array keeps resetting when trying to add new items after switching pages. It even adds random null values, and it doesn't even let me open the cart itself
         if(localStorage.getItem('cartItems') === undefined || localStorage.getItem('cartItems') === null){
             cartArray.push(cartItem);
             localStorage.setItem('cartItems', JSON.stringify(cartArray));
@@ -365,4 +365,5 @@ window.addEventListener("click", e => {
     }
 });
 
+//Run the main function and get things going
 mainFunc();

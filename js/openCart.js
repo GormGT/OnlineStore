@@ -14,6 +14,7 @@ function viewCart(){
     for(i = 0; i < shoppingCart.length; i++){
         let itemLookup = shoppingCart[i].itemID;
         let itemPath = shoppingCart[i].itemPath;
+        let itemAmnt = shoppingCart[i].itemAmnt;
         console.log(itemLookup);
         console.log(itemPath);
 
@@ -39,12 +40,12 @@ function viewCart(){
             console.log(appliedCartClass);
 
             console.log(snapshot.data());
-            createHTML(snapshot.data(), itemLookup);
+            createHTML(snapshot.data(), itemLookup, itemAmnt);
         })
     }
 }
 
-function createHTML(storeItem, id){
+function createHTML(storeItem, id, itemAmnt){
     let html = `
         <div class="cartItem" data-itemid="${id}">
             <img class="cartItemImg" src="${storeItem.itemImg}" width="120px">
@@ -53,7 +54,7 @@ function createHTML(storeItem, id){
                 <h3 class="cartPrice">$${storeItem.itemPrice}</h3>
             </div>
             <div class="cartInfoAmntRemv">
-                <p>Antall: 1</p>
+                <p>Antall: ${itemAmnt}</p>
                 <button class="generalButton remove${id}" onclick="removeCartItem('${storeItem.itemName}', '${id}')">Fjern fra handlekurv</button>
             </div>
         </div>`

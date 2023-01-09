@@ -1,6 +1,9 @@
 let PleaseWork;
 let budgetRegex;
 let appliedClass;
+let itemPageCartArray = [];
+
+
 
 test();
 
@@ -69,7 +72,7 @@ function showProdDetails(storeItem, id){
             <div>
               <div class="storePageAddCartAmnt">
                 <button for="storePageItemCartAmnt" onclick="increaseAmount('-')" class="generalButton storePageAmntButton">-</button>
-                <input type="number" id="storePageItemCartAmnt" value="1"></input>
+                <input type="number" id="storePageItemCartAmnt" value="1"></input><!--This is broken on FireFox (I think), so be careful if you use that-->
                 <button for="storePageItemCartAmnt" onclick="increaseAmount('+')" class="generalButton storePageAmntButton">+</button>
               </div>
               <button class="generalButton storePageAddCart">Legg i handlevogn</button>
@@ -100,6 +103,52 @@ function defineField(){
   return storePageItemCartAmnt;
 }
 
+//Add items to the cart, mostly copy+paste from storeSort.js
+setTimeout(() => {
+  let addCartBtn = document.querySelector(".storePageAddCart");
+  //console.log(addCartBtn);
+  addCartBtn.addEventListener("click", e => {
+    console.log(e.target);
+
+    let shopButton = e.target;
+    let fullItem = shopButton.parentElement.parentElement.parentElement;
+    let itemAmount = Number(PleaseWork.value);
+    console.log(itemAmount);
+
+    console.log(fullItem);
+
+    //Get item ID and path for lookup, then add to array
+    let cartItemID = fullItem.getAttribute("itemid");
+    let cartItemPath = localStorage.getItem("itemType");
+    let cartItem = {
+        itemID: cartItemID,
+        itemPath: cartItemPath,
+        itemAmnt: itemAmount
+    };
+    console.log(cartItem);
+    if(localStorage.getItem('cartItems') === undefined || localStorage.getItem('cartItems') === null){
+        itemPageCartArray.push(cartItem);
+        localStorage.setItem('cartItems', JSON.stringify(itemPageCartArray));
+    }else{
+        itemPageCartArray.length = 0;
+        let cartFromStorage = JSON.parse(localStorage.getItem('cartItems'));
+        let i = 0;
+        cartFromStorage.forEach(() => {
+            itemPageCartArray.push(cartFromStorage[i]);
+            i++;
+        })
+        localStorage.removeItem('cartItems');
+        itemPageCartArray.push(cartItem);
+        localStorage.setItem('cartItems', JSON.stringify(itemPageCartArray));
+    }
+
+    shopButton.innerText = "I handlekurv";
+    shopButton.setAttribute("disabled", true);
+    shopButton.style.backgroundColor = "rgb(50, 50, 50)";
+    shopButton.disabled = true;
+  })
+}, 500)
+
 let increaseAmount = (n) => {
   if (n == '+'){
     PleaseWork.value ++;
@@ -117,6 +166,8 @@ let increaseAmount = (n) => {
     //console.log("test");
   }
 }
+
+//Code below is temporarily discontinued. Found some much higher quality images, and therefore extra images aren't necessary. 
 
 //Do this later. It's a function that is supposed to show/hide the carousel-buttons depending on if there is only a single image or not. However, it refuses to work no matter what, so I'm postponing it for now
 /*let carouselButtons = Array.from(document.getElementsByClassName('carouselButton'));//This isn't being defined correctly for some reason
