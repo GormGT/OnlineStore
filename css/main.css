@@ -238,6 +238,9 @@ main {
     font-family: "tf2build";
     letter-spacing: 2px;
 }
+.cartPrice{
+    color: rgb(0, 169, 0);
+}
 
 .cartInfoAmntRemv {  
     display: grid;

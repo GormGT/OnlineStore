@@ -1,6 +1,6 @@
 let shoppingCart = [];
 
-let appliedClass;
+let appliedCartClass;
 
 let shoppingCartContain = document.querySelector(".cartDisplayContainer");
 let shoppingCartView = document.querySelector(".cartItemView");
@@ -19,24 +19,24 @@ function viewCart(){
 
         db.collection(`storeItems${itemPath}`).doc(itemLookup).get().then((snapshot) => {
             if(itemPath.includes("merc-grade")){
-                appliedClass = "merc-grade";
+                appliedCartClass = "merc-grade";
             }else if(itemPath.includes("comm-grade")){
-                appliedClass = "comm-grade";
+                appliedCartClass = "comm-grade";
             }else if(itemPath.includes("assassin-grade")){
-                appliedClass = "ass-grade";
+                appliedCartClass = "ass-grade";
             }else if(itemPath.includes("elite-grade")){
-                appliedClass = "elite-grade";
+                appliedCartClass = "elite-grade";
             }else if(itemPath.includes("unusual")){
-                appliedClass = "unusual";
+                appliedCartClass = "unusual";
             }else if(itemPath.includes("botkillers")){
-                appliedClass = "strange";
+                appliedCartClass = "strange";
             }else if(itemPath.includes("australium")){
-                appliedClass = "strange";
+                appliedCartClass = "strange";
             }else{
-                appliedClass = "normal";
+                appliedCartClass = "normal";
             }
     
-            console.log(appliedClass);
+            console.log(appliedCartClass);
 
             console.log(snapshot.data());
             createHTML(snapshot.data(), itemLookup);
@@ -46,23 +46,48 @@ function viewCart(){
 
 function createHTML(storeItem, id){
     let html = `
-        <div class="cartItem">
+        <div class="cartItem" data-itemid="${id}">
             <img class="cartItemImg" src="${storeItem.itemImg}" width="120px">
             <div class="cartInfoText">
-                <h2 class="${appliedClass}">${storeItem.itemName}</h2>
+                <h2 class="${appliedCartClass}">${storeItem.itemName}</h2>
+                <h3 class="cartPrice">$${storeItem.itemPrice}</h3>
             </div>
             <div class="cartInfoAmntRemv">
                 <p>Antall: 1</p>
-                <button class="generalButton">Fjern fra handlekurv</button>
+                <button class="generalButton remove${id}" onclick="removeCartItem('${storeItem.itemName}', '${id}')">Fjern fra handlekurv</button>
             </div>
         </div>`
     shoppingCartView.innerHTML += html;
 }
 
+function removeCartItem(itemName, itemID){
+    console.log(itemName, itemID);
+    let itemToRemove = document.querySelector(`.remove${itemID}`).parentElement.parentElement;
+    console.log(itemToRemove);
+    itemToRemove.innerHTML = "";
+
+    shoppingCart.length = 0;
+    let cartFromStorage = JSON.parse(localStorage.getItem('cartItems'));
+    let i = 0;
+    cartFromStorage.forEach(() => {
+        shoppingCart.push(cartFromStorage[i]);
+        i++;
+    })
+    localStorage.removeItem('cartItems');
+    console.log(shoppingCart);
+    let removedItemID = shoppingCart.findIndex(i => i.itemID === itemID);
+    console.log(removedItemID);
+    shoppingCart.splice(removedItemID, 1);
+    console.log(shoppingCart);
+    //shoppingCart.push(cartItem);
+    localStorage.setItem('cartItems', JSON.stringify(shoppingCart));
+}
+
 function openCart(){
+    shoppingCartView.innerHTML = "";
     viewCart();
     toggleCart();
-    cartButtonAtr.setAttribute('onclick', 'toggleCart()');
+    //cartButtonAtr.setAttribute('onclick', 'toggleCart()');
 }
 
 function toggleCart(){

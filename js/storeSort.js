@@ -162,10 +162,10 @@ function mainFunc(selectedSort){
         //On the index page, limit to 16 items
         const loadItems = setTimeout(() => {
 
-            for(i = 0; i <= 15; i++){ // THIS is what's being the problem. It's trying to inject the objects in the array into the HTML, before they're even defined
+            for(i = 0; i < 16; i++){ // THIS is what's being the problem. It's trying to inject the objects in the array into the HTML, before they're even defined
                 //console.log(indexCollection[i]);
                 let qClass;
-                switch (indexCollection[i].itemPath){ //If it is directly injected into the HTML, everything breaks
+                switch (indexCollection[i].itemPath){ //If it is directly injected into the HTML, everything breaks| This line also for some reason creates consistent errors. It claims the itemPath isn't defined, even though it still executes the code, but 50% of the time it doesn't
                     //cosmetics
                     case '/Cosmetics/merc-grade':
                     qClass = 'merc-grade';
@@ -226,9 +226,9 @@ function mainFunc(selectedSort){
         setTimeout(() => {
             prodSort(selectedSort);
             //productOrderArray.sort((a, b) => b.itemPop - a.itemPop);
-            for(i = 0; i <= productOrderArray.length; i++){
+            for(i = 0; i < productOrderArray.length; i++){
                 let qClass;
-                switch (productOrderArray[i].itemPath){ //Why is this line returning errors
+                switch (productOrderArray[i].itemPath){ //This line has the same problem as line 168
                     //cosmetics
                     case '/Cosmetics/merc-grade':
                     qClass = 'merc-grade';
@@ -330,10 +330,22 @@ window.addEventListener("click", e => {
             itemID: cartItemID,
             itemPath: cartItemPath
         };
-
-        cartArray.push(cartItem);
-        console.log(cartArray);
-        localStorage.setItem('cartItems', JSON.stringify(cartArray));
+        //Figure out why the localstorage array keeps resetting when trying to add new items after switching pages. It even adds random null values, and it doesn't even let me open the cart itself
+        if(localStorage.getItem('cartItems') === undefined || localStorage.getItem('cartItems') === null){
+            cartArray.push(cartItem);
+            localStorage.setItem('cartItems', JSON.stringify(cartArray));
+        }else{
+            cartArray.length = 0;
+            let cartFromStorage = JSON.parse(localStorage.getItem('cartItems'));
+            let i = 0;
+            cartFromStorage.forEach(() => {
+                cartArray.push(cartFromStorage[i]);
+                i++;
+            })
+            localStorage.removeItem('cartItems');
+            cartArray.push(cartItem);
+            localStorage.setItem('cartItems', JSON.stringify(cartArray));
+        }
 
         shopButton.innerText = "I handlekurv";
         shopButton.setAttribute("disabled", true);
