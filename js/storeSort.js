@@ -1,6 +1,7 @@
 //-------------------------------------------------------------Main database storesort--------------------------------------------------------
 let storeSlots = document.querySelector(".storeArea");
 let sortButton = document.querySelector("#sortButton");
+let searchField = document.querySelector(".searchField input");
 let documentName = document.title;
 let selectedSort;// = 'popularity';
 
@@ -410,6 +411,10 @@ setTimeout(() => {
     // let addedCartItems = document.querySelectorAll(".addedCartItem");
     // console.log(addedCartItems);
 }, 800);
+
+searchField.addEventListener("submit", e => {
+    alert("Test");
+})
 
 //Run the main function and get things going
 mainFunc();

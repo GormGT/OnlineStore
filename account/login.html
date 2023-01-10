@@ -14,7 +14,7 @@
             <li class="navLeft"> <a class="navbar-image"  href="../index.html"> <img class="grid-navbar-element" src="../img/logo.png" alt="Mann co logo" width="80px"></a></li>
             <li class="navLeft"> <a href="../html/about.html" class="grid-navbar-element">Om oss</a></li>
             <li class="navLeft"> <a href="../html/products.html" class="grid-navbar-element">Produkter</a></li>
-            <li class="navLeft searchField"><input class="test" id="searchTxt" placeholder="Søk"></li>
+            <form onsubmit="event.preventDefault(), alert('Test')"><li class="navLeft searchField"><input class="test" id="searchTxt" placeholder="Søk"></li></form>
             <li class="navRight"><a href="../account/login.html" class="grid-navbar-element selectedTab">Logg inn</a></li>
             <li class="navRight"> <a class="grid-navbar-element cartButton" onclick="openCart()"><i class="fa-solid fa-cart-shopping"></i></a></li>
         </ul>
@@ -67,7 +67,7 @@
         <div class="footerRight">
             <a href="../html/about.html">Om oss</a>
             <p>1111 2222 3333 MVA</p>
-            <a href="#">Support</a>
+            <a href="../html/support.html">Support</a>
             <p>Tlf: +1-202-555-0196</p>
         </div>
     </footer>

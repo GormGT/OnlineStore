@@ -3,12 +3,18 @@ let shoppingCart = [];
 let appliedCartClass;
 
 let shoppingCartContain = document.querySelector(".cartDisplayContainer");
+let shoppingCartHeader = document.querySelector(".cartDisplay h1");
 let shoppingCartView = document.querySelector(".cartItemView");
 let cartButtonAtr = document.querySelector(".cartButton");
 
 function viewCart(){
     shoppingCart = JSON.parse(localStorage.getItem('cartItems'));
     console.log(shoppingCart);
+    // if(shoppingCart = ""){
+    //     shoppingCartHeader.innerText = "Handlekurv: Tom :(";
+    // }else{
+    //     shoppingCartHeader.innerText = "Handlekurv:";
+    // }
 
     //Code mostly taken from storeItemPage.js, but modified to work for the cart instead
     for(i = 0; i < shoppingCart.length; i++){

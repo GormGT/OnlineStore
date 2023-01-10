@@ -723,6 +723,18 @@ form.loginForm {
 .dropdownContain button{
     width: 100%;
 }
+.allSort{
+    padding: 10px;
+    font-family: "tf2secondary";
+    font-size: 16px;
+    color: white;
+    background-color: #343434;
+    border: none;
+}
+.allSort:hover{
+    background-color: #222222;
+    cursor: pointer;
+}
 .dropdownContent{
     display: none;
     position: absolute;
