@@ -1,27 +1,27 @@
 /*Define extra fonts*/
 @font-face {
     font-family: "tf2Secondary";
-    src: url("/fonts/TF2secondary.ttf");
+    src: url("../fonts/TF2secondary.ttf");
 }
 @font-face {
     font-family: "bebasRegular";
-    src: url("/fonts/Bebas-Regular.ttf");
+    src: url("../fonts/Bebas-Regular.ttf");
 }
 @font-face {
     font-family: "borisBlack";
-    src: url("/fonts/BorisBlackBloxx.ttf");
+    src: url("../fonts/BorisBlackBloxx.ttf");
 }
 @font-face {
     font-family: "tf2Build";
-    src: url("/fonts/tf2build.ttf");
+    src: url("../fonts/tf2build.ttf");
 }
 @font-face {
     font-family: "SFalt";
-    src: url("/fonts/Truetype/GhoulFriAOE.ttf");
+    src: url("../fonts/Truetype/GhoulFriAOE.ttf");
 }
 @font-face {
     font-family: "NewsHeader";
-    src: url("/fonts/LietzLindauHamburg.otf");
+    src: url("../fonts/LietzLindauHamburg.otf");
 }
 
 body {
